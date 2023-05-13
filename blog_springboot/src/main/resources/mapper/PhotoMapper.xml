@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.PhotoMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.Photo">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="album_id" column="album_id" jdbcType="INTEGER"/>
+            <result property="photo_name" column="photo_name" jdbcType="VARCHAR"/>
+            <result property="photo_desc" column="photo_desc" jdbcType="VARCHAR"/>
+            <result property="photo_url" column="photo_url" jdbcType="VARCHAR"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,album_id,photo_name,
+        photo_desc,photo_url,create_time,
+        update_time
+    </sql>
+</mapper>

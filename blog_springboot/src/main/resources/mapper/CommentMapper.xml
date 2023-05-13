@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.CommentMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.Comment">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="commentType" column="comment_type" jdbcType="TINYINT"/>
+            <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+            <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+            <result property="replyId" column="reply_id" jdbcType="INTEGER"/>
+            <result property="commentContent" column="comment_content" jdbcType="VARCHAR"/>
+            <result property="fromUid" column="from_uid" jdbcType="INTEGER"/>
+            <result property="toUid" column="to_uid" jdbcType="INTEGER"/>
+            <result property="isCheck" column="is_check" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,comment_type,type_id,
+        parent_id,reply_id,comment_content,
+        from_uid,to_uid,is_check,
+        create_time,update_time
+    </sql>
+    <select id="selectParentComment" resultType="com.lyc.model.vo.CommentVO">
+        SELECT c.id, c.from_uid, u.nickname AS fromNickname,u.web_site, u.avatar, c.comment_content, c.create_time
+        FROM t_comment c
+        INNER JOIN t_user u ON c.from_uid = u.id
+        <where>
+            <if test="condition.typeId != null">
+                type_id=#{condition.typeId}
+            </if>
+            AND comment_type=#{condition.commentType}
+            AND c.is_check=1
+            AND parent_id IS NULL
+        </where>
+        ORDER BY c.id DESC
+        LIMIT #{limit},#{size}
+    </select>
+
+    <select id="selectReplyByParentIdList" resultType="com.lyc.model.vo.ReplyVO">
+        SELECT *
+        FROM (
+        SELECT c.from_uid,
+        u.nickname AS from_nickname,
+        u.avatar,
+        c.to_uid,
+        r.nickname AS to_nickname,
+        c.id,
+        c.parent_id,
+        c.comment_content,
+        c.create_time,
+        ROW_NUMBER() over (PARTITION BY parent_id ORDER BY create_time ASC ) row_num
+        FROM t_comment c
+        JOIN t_user u ON c.from_uid = u.id
+        JOIN t_user r ON c.to_uid = r.id
+        WHERE c.is_check = 1
+        AND parent_id IN
+        <foreach collection="parentCommentIdList" open="(" close=")" item="commentId" separator=",">
+            #{commentId}
+        </foreach>
+        ) t
+        WHERE 4 > row_num
+    </select>
+
+    <select id="selectReplyCountByParentId" resultType="com.lyc.model.vo.ReplyCountVO">
+        SELECT parent_id as comment_id,
+        count(1) AS reply_count
+        FROM t_comment
+        WHERE is_check = 1
+        AND parent_id IN
+        <foreach collection="parentCommentIdList" open="(" close=")" item="commentId" separator=",">
+            #{commentId}
+        </foreach>
+        GROUP BY parent_id
+    </select>
+
+    <select id="selectReplyByParentId" resultType="com.lyc.model.vo.ReplyVO">
+        SELECT
+            c.id,
+            c.parent_id,
+            c.comment_content,
+            c.create_time,
+            c.from_uid,
+            c.to_uid,
+            u.nickname AS from_nickname,
+            u.avatar,
+            r.nickname AS to_nickname
+        FROM t_comment c
+        JOIN t_user u ON c.from_uid = u.id
+        JOIN t_user r ON c.to_uid = r.id
+        WHERE
+            c.is_check=1
+            AND
+            parent_id=#{parentId}
+        ORDER BY c.create_time DESC
+        LIMIT #{limit},#{size}
+    </select>
+</mapper>

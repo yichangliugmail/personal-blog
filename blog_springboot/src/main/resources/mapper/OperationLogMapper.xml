@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.OperationLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.OperationLog">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="module" column="module" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="uri" column="uri" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="params" column="params" jdbcType="VARCHAR"/>
+            <result property="method" column="method" jdbcType="VARCHAR"/>
+            <result property="data" column="data" jdbcType="VARCHAR"/>
+            <result property="user_id" column="user_id" jdbcType="INTEGER"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="ip_address" column="ip_address" jdbcType="VARCHAR"/>
+            <result property="ip_source" column="ip_source" jdbcType="VARCHAR"/>
+            <result property="times" column="times" jdbcType="INTEGER"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,module,type,
+        uri,name,description,
+        params,method,data,
+        user_id,nickname,ip_address,
+        ip_source,times,create_time
+    </sql>
+</mapper>

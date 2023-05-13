@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.TaskLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.TaskLog">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="task_name" column="task_name" jdbcType="VARCHAR"/>
+            <result property="task_group" column="task_group" jdbcType="VARCHAR"/>
+            <result property="invoke_target" column="invoke_target" jdbcType="VARCHAR"/>
+            <result property="task_message" column="task_message" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="error_info" column="error_info" jdbcType="VARCHAR"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,task_name,task_group,
+        invoke_target,task_message,status,
+        error_info,create_time
+    </sql>
+</mapper>
