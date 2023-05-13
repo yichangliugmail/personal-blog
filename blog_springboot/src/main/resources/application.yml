@@ -1,0 +1,160 @@
+server:
+  # 端口
+  port: 
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: 
+  # 应用名称
+  application:
+    name: 
+  # mysql配置
+  datasource:
+    type: 
+    driver-class-name: 
+    url: 
+    username: 
+    password: 
+    druid:
+      # 初始连接数
+      initial-size: 10
+      # 最小连接池数量
+      min-idle: 10
+      # 最大连接池数量
+      max-active: 150
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 600000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      max-evictable-idle-time-millis: 900000
+      # 配置检测连接是否有效
+      validation-query: SELECT 1 FROM DUAL
+      # 配置检测连接是否有效时间
+      validation-query-timeout: 500
+      # 在获取连接后，确定是否要进行连接空间时间的检查
+      test-while-idle: true
+      # 设置从连接池获取连接时是否检查连接有效性，true检查，false不检查
+      test-on-borrow: false
+      # 设置从连接池归还连接时是否检查连接有效性，true检查，false不检查
+      test-on-return: false
+
+  # redis配置
+  redis:
+    # Redis服务器地址
+    host: 
+    # Redis服务器连接端口
+    port: 
+    # Redis服务器连接密码（默认为空）
+    password: 
+    # 连接超时时间
+    timeout: 
+    lettuce:
+      pool:
+        # 连接池最大连接数
+        max-active: 150
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 5000ms
+        # 连接池中的最大空闲连接
+        max-idle: 100
+        # 连接池中的最小空闲连接
+        min-idle: 50
+  # rabbitmq配置
+  rabbitmq:
+    host: 
+    port: 
+    username: 
+    password: 
+    listener:
+      simple:
+        retry:
+          enabled: true
+          # 重试间隔时间
+          initial-interval: 3000
+          # 最大重试次数
+          max-attempts: 3
+  # 邮箱配置
+  mail:
+    host: 
+    username: 
+    #邮箱授权码
+    password: 
+
+
+# Sa-Token 配置 (文档: https://sa-token.cc)
+sa-token:
+  # token名称 (同时也是cookie名称)
+  token-name: Authorization
+  # token前缀
+  token-prefix: Bearer
+  # token有效期，单位s 默认30天, -1代表永不过期
+  timeout: 1800
+  # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
+  activity-timeout: -1
+  # 关闭自动续签
+  auto-renew: false
+  # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
+  is-concurrent: true
+  # token风格
+  token-style: uuid
+  # 在多人登录同一账号时，是否共用一个token (true共用token, 为false时每次登录新建token)
+  is-share: false
+  # 同一账号最大登录数量
+  max-login-count: 20
+  # 是否从cookie中读取token
+  is-read-cookie: false
+  # 是否从请求体里读取token
+  is-read-body: false
+  # 是否从header中读取token
+  is-read-header: true
+  # 是否输出操作日志
+  is-log: false
+
+# mybatisPlus配置
+mybatis-plus:
+  # mapper映射地址
+  mapper-locations: classpath:mapper/*.xml
+  # 实体类扫描包路径
+  type-aliases-package: com.lyc.mapper
+  configuration:
+    # sql打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      # 数据库表前缀
+      table-prefix: t_
+
+# 文件上传策略 local、cos
+upload:
+  strategy: cos
+  local:
+    # nginx映射本地文件路径
+    url: https://
+    # 本地文件存储路径
+    path: /temp/upload
+  cos:
+    bucket-name: 
+    region: 
+    #APPID
+    #appId: 
+    #1 初始化用户身份信息(secretId, secretKey), SecretId 是用于标识 API 调用者的身份
+    secretId: 
+    #SecretKey是用于加密签名字符串和服务器端验证签名字符串的密钥
+    secretKey: 
+    #访问路径前缀
+    url: 
+
+# 线程池配置
+thread:
+  pool:
+    # 核心池大小
+    core-pool-size: 5
+    # 最大线程池大小
+    max-pool-size: 10
+    # 线程池容量
+    queue-capacity: 50
+    keep-alive-seconds: 60

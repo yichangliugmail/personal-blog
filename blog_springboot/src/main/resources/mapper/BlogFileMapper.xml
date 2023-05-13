@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.BlogFileMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.BlogFile">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="file_url" column="file_url" jdbcType="VARCHAR"/>
+            <result property="file_name" column="file_name" jdbcType="VARCHAR"/>
+            <result property="file_size" column="file_size" jdbcType="INTEGER"/>
+            <result property="extend_name" column="extend_name" jdbcType="VARCHAR"/>
+            <result property="file_path" column="file_path" jdbcType="VARCHAR"/>
+            <result property="is_dir" column="is_dir" jdbcType="TINYINT"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,file_url,file_name,
+        file_size,extend_name,file_path,
+        is_dir,create_time,update_time
+    </sql>
+</mapper>

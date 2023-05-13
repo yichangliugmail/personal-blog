@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyc.mapper.TaskMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyc.model.po.Task">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="task_name" column="task_name" jdbcType="VARCHAR"/>
+            <result property="task_group" column="task_group" jdbcType="VARCHAR"/>
+            <result property="invoke_target" column="invoke_target" jdbcType="VARCHAR"/>
+            <result property="cron_expression" column="cron_expression" jdbcType="VARCHAR"/>
+            <result property="misfire_policy" column="misfire_policy" jdbcType="TINYINT"/>
+            <result property="concurrent" column="concurrent" jdbcType="TINYINT"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,task_name,task_group,
+        invoke_target,cron_expression,misfire_policy,
+        concurrent,status,remark,
+        create_time,update_time
+    </sql>
+</mapper>
