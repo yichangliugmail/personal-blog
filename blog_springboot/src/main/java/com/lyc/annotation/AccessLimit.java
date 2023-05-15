@@ -3,7 +3,7 @@ package com.lyc.annotation;
 import java.lang.annotation.*;
 
 /**
- * Redis限流注解
+ * 操作限流注解
  *
  * @author 刘怡畅
  */

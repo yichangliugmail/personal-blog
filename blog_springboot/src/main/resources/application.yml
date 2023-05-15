@@ -1,20 +1,20 @@
-server:
+﻿server:
   # 端口
-  port: 
+  port:
 spring:
   mvc:
     pathmatch:
-      matching-strategy: 
+      matching-strategy:
   # 应用名称
   application:
-    name: 
+    name:
   # mysql配置
   datasource:
-    type: 
-    driver-class-name: 
-    url: 
-    username: 
-    password: 
+    type:
+    driver-class-name:
+    url:
+    username:
+    password:
     druid:
       # 初始连接数
       initial-size: 10
@@ -44,13 +44,13 @@ spring:
   # redis配置
   redis:
     # Redis服务器地址
-    host: 
+    host:
     # Redis服务器连接端口
-    port: 
+    port:
     # Redis服务器连接密码（默认为空）
-    password: 
+    password:
     # 连接超时时间
-    timeout: 
+    timeout:
     lettuce:
       pool:
         # 连接池最大连接数
@@ -63,10 +63,10 @@ spring:
         min-idle: 50
   # rabbitmq配置
   rabbitmq:
-    host: 
-    port: 
-    username: 
-    password: 
+    host:
+    port:
+    username:
+    password:
     listener:
       simple:
         retry:
@@ -77,10 +77,10 @@ spring:
           max-attempts: 3
   # 邮箱配置
   mail:
-    host: 
-    username: 
+    host:
+    username:
     #邮箱授权码
-    password: 
+    password:
 
 
 # Sa-Token 配置 (文档: https://sa-token.cc)
@@ -137,16 +137,16 @@ upload:
     # 本地文件存储路径
     path: /temp/upload
   cos:
-    bucket-name: 
-    region: 
+    bucket-name:
+    region:
     #APPID
-    #appId: 
+    #appId:
     #1 初始化用户身份信息(secretId, secretKey), SecretId 是用于标识 API 调用者的身份
-    secretId: 
+    secretId:
     #SecretKey是用于加密签名字符串和服务器端验证签名字符串的密钥
-    secretKey: 
+    secretKey:
     #访问路径前缀
-    url: 
+    url:
 
 # 线程池配置
 thread:
