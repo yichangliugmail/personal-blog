@@ -30,7 +30,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
     /**
      * 条件查询文章数量
      * @param condition 该注解是给参数命名，也就是#{参数}
-     * @return 数量
      */
     Long ArticleCount(@Param("condition") ConditionDTO condition);
 
@@ -38,7 +37,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
 
     /**
      * 推荐文章集合
-     * @return rr
      */
     List<ArticleRecommendVO> selectArticleRecommend();
 
@@ -47,6 +45,11 @@ public interface ArticleMapper extends BaseMapper<Article> {
     ArticleVO selectArticleHomeById(@Param("articleId") Integer articleId);
 
     ArticlePaginationVO selectArticlePaginationVO(@Param("sign") String sign,@Param("articleId") Integer articleId);
+
+    /**
+     * 编辑文章信息
+     */
+    ArticleInfoVO selectArticleInfo(@Param("articleId") Integer articleId);
 }
 
 

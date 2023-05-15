@@ -244,7 +244,6 @@
             <id column="tag_id" property="id"/>
             <result column="tag_name" property="tagName"/>
         </collection>
-
     </resultMap>
 
     <select id="selectArticleHomeById" resultMap="articleVO">
@@ -260,9 +259,9 @@
                t.id AS tag_id,
                tag_name
         FROM t_article a
-                 INNER JOIN t_category c ON a.category_id = c.id
-                 INNER JOIN t_article_tag tat ON a.id = tat.article_id
-                 INNER JOIN t_tag t ON tat.tag_id = t.id
+            INNER JOIN t_category c ON a.category_id = c.id
+            INNER JOIN t_article_tag tat ON a.id = tat.article_id
+            INNER JOIN t_tag t ON tat.tag_id = t.id
         WHERE is_delete = 0
           AND `status` = 1
           AND a.id = #{articleId}
@@ -281,5 +280,41 @@
         </if>
         </where>
         ORDER BY id ASC LIMIT 1;
+    </select>
+
+    <resultMap id="ArticleInfoVO" type="com.lyc.model.vo.ArticleInfoVO">
+        <id column="id" property="id"/>
+        <result property="articleCover" column="article_cover"/>
+        <result property="articleTitle" column="article_title"/>
+        <result property="articleContent" column="article_content"/>
+        <result property="articleType" column="article_type"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="categoryName" column="category_name"/>
+        <result property="status" column="status"/>
+        <result property="isTop" column="is_top"/>
+        <result property="isRecommend" column="is_recommend"/>
+        <collection property="tagNameList" ofType="String">
+            <result column="tag_name" javaType="String"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectArticleInfo" resultMap="ArticleInfoVO">
+        SELECT
+            a.id,
+            a.status,
+            article_cover,
+            is_top,
+            is_recommend,
+            article_title,
+            article_content,
+            article_type,
+            a.category_id,
+            c.category_name,
+            t.tag_name
+        FROM t_article a
+            INNER JOIN t_category c ON c.id=a.category_id
+            INNER JOIN t_article_tag tat ON a.id=tat.article_id
+            INNER JOIN t_tag t ON tat.tag_id=t.id
+        WHERE a.id=#{articleId}
     </select>
 </mapper>
