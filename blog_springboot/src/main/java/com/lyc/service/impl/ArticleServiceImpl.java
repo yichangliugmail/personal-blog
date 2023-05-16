@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.constant.CommonConstant;
 import com.lyc.constant.ParamConstant;
+import com.lyc.handler.ServiceException;
 import com.lyc.mapper.*;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.TopDTO;
 import com.lyc.model.po.*;
 import com.lyc.model.vo.*;
 import com.lyc.common.PageResult;
@@ -202,6 +204,24 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         articleVO.setLastArticle(lastArticle);
 
         return articleVO;
+    }
+
+    @Override
+    public void changeTop(TopDTO topDTO) {
+        Integer id = topDTO.getId();
+        Article article = articleMapper.selectById(id);
+        Integer isTop = topDTO.getIsTop();
+        article.setIsTop(isTop);
+        int count = articleMapper.updateById(article);
+        if(count==0){
+            throw new ServiceException(isTop==0?"置顶失败！":"取消置顶失败！");
+        }
+    }
+
+    @Override
+    public ArticleInfoVO getArticleInfo(Integer articleId) {
+        ArticleInfoVO articleInfoVO=articleMapper.selectArticleInfo(articleId);
+        return articleInfoVO;
     }
 }
 

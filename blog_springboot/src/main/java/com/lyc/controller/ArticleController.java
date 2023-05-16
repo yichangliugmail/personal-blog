@@ -5,11 +5,9 @@ import com.lyc.annotation.VisitLogger;
 import com.lyc.common.Result;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
-import com.lyc.model.vo.ArticleBackVO;
+import com.lyc.model.dto.TopDTO;
+import com.lyc.model.vo.*;
 import com.lyc.common.PageResult;
-import com.lyc.model.vo.ArticleHomeVO;
-import com.lyc.model.vo.ArticleRecommendVO;
-import com.lyc.model.vo.ArticleVO;
 import com.lyc.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -79,6 +77,20 @@ public class ArticleController {
     @GetMapping("/article/{articleId}")
     public Result<ArticleVO> detailArticle(@PathVariable Integer articleId){
         return Result.success(articleService.getArticleDetail(articleId));
+    }
+
+    @ApiOperation("文章置顶")
+    @PutMapping("/admin/article/top")
+    public Result<?> articleTop(@RequestBody TopDTO topDTO){
+        articleService.changeTop(topDTO);
+        return Result.success(null);
+    }
+
+    @ApiOperation("获取文章信息用于编辑")
+    @SaCheckPermission("blog:article:edit")
+    @GetMapping("/admin/article/edit/{articleId}")
+    public Result<ArticleInfoVO> getArticleInfo(@PathVariable Integer articleId){
+        return Result.success(articleService.getArticleInfo(articleId));
     }
 
 
