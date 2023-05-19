@@ -63,6 +63,13 @@ public class CommentController {
         return Result.success(replyVOList);
     }
 
+    @ApiOperation("后台评论集合")
+    @GetMapping("/admin/comment/list")
+    public Result<PageResult<CommentBackVO>> commentList(ConditionDTO conditionDTO){
+        PageResult<CommentBackVO> pageResult=commentService.listCommentBackVO(conditionDTO);
+        return Result.success(pageResult);
+    }
+
     //=======留言板=======
 
     @ApiOperation("前台留言列表")

@@ -10,6 +10,7 @@ import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.MessageDTO;
 import com.lyc.model.po.Comment;
 import com.lyc.model.po.SiteConfig;
+import com.lyc.model.vo.CommentBackVO;
 import com.lyc.model.vo.CommentVO;
 import com.lyc.model.vo.ReplyCountVO;
 import com.lyc.model.vo.ReplyVO;
@@ -119,6 +120,21 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
 
         return replyVOList;
+    }
+
+    @Override
+    public PageResult<CommentBackVO> listCommentBackVO(ConditionDTO condition) {
+        PageResult<CommentBackVO> pageResult = new PageResult<>();
+        //获取评论用户昵称
+        Long count=commentMapper.commentCount(condition);
+        pageResult.setCount(count);
+        if(count==0){
+            return pageResult;
+        }
+
+        List<CommentBackVO> commentBackVOList=commentMapper.selectCommentBackVOList(PageUtils.getLimit(),PageUtils.getSize(),condition);
+        pageResult.setRecordList(commentBackVOList);
+        return pageResult;
     }
 
 

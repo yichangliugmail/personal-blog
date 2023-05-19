@@ -98,4 +98,52 @@
         ORDER BY c.create_time DESC
         LIMIT #{limit},#{size}
     </select>
+    
+    <select id="commentCount" resultType="java.lang.Long">
+        SELECT COUNT(c.id)
+        from t_comment c
+        LEFT JOIN t_user u on c.from_uid = u.id
+        <where>
+            <if test="condition.keyword!=null">
+                u.nickname like concat('%',#{condition.keyword},'%')
+            </if>
+            <if test="condition.commentType!=null">
+                and c.comment_type=#{condition.condition.commentType}
+            </if>
+            <if test="condition.isCheck!=null">
+                and c.is_check=#{condition.isCheck}
+            </if>
+        </where>
+    </select>
+    <select id="selectCommentBackVOList" resultType="com.lyc.model.vo.CommentBackVO">
+        SELECT
+            c.id,
+            fu.avatar,
+            fu.nickname AS from_nickname,
+            tu.nickname AS to_nickname,
+            a.article_title,
+            comment_content,
+            comment_type,
+            is_check,
+            a.create_time
+        FROM
+            t_comment c
+        LEFT JOIN t_user fu ON fu.id=c.from_uid
+        LEFT JOIN t_user tu ON tu.id=c.to_uid
+        LEFT JOIN t_article a ON a.id=c.type_id
+        <where>
+            <if test="condition.keyword!=null">
+                fu.nickname like concat('%',#{condition.keyword},'%')
+            </if>
+            <if test="condition.commentType!=null">
+                and c.comment_type=#{condition.commentType}
+            </if>
+            <if test="condition.isCheck!=null">
+                and c.is_check=#{condition.isCheck}
+            </if>
+        </where>
+        ORDER BY c.create_time
+        LIMIT #{limit},#{size}
+    </select>
+
 </mapper>
