@@ -1,6 +1,11 @@
 package com.lyc.aspect;
 
 import com.lyc.annotation.VisitLogger;
+import com.lyc.manager.AsyncManager;
+import com.lyc.manager.factory.AsyncFactory;
+import com.lyc.model.po.VisitLog;
+import com.lyc.utils.IpUtils;
+import com.lyc.utils.UserAgentUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,7 +17,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Map;
 import java.util.Objects;
+import java.util.TimerTask;
 
 /**
  * @author 刘怡畅
@@ -45,7 +52,22 @@ public class VisitLogAspect {
         VisitLogger visitLogger = method.getAnnotation(VisitLogger.class);
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = Objects.requireNonNull(attributes).getRequest();
+        //解析browser和os
+        Map<String, String> userAgentMap = UserAgentUtils.parseOsAndBrowser(request.getHeader("User-Agent"));
+        String ipAddress = IpUtils.getIpAddress(request);
+        String ipSource = IpUtils.getIpSource(ipAddress);
 
+        //封装对象
+        VisitLog visitLog=VisitLog.builder()
+                .browser(userAgentMap.get("browser"))
+                .os(userAgentMap.get("os"))
+                .ipAddress(ipAddress)
+                .ipSource(ipSource)
+                .page(visitLogger.value())
+                .build();
+
+        TimerTask timerTask = AsyncFactory.recordVisitLog(visitLog);
+        AsyncManager.getInstance().execute(timerTask);
     }
 
 

@@ -20,4 +20,24 @@
         select id, tag_name
         from t_tag
     </select>
+
+    <select id="selectTagList" resultType="com.lyc.model.po.Tag">
+        SELECT 
+            id,
+            tag_name
+        FROM
+            t_tag
+        WHERE tag_name IN
+            <foreach collection="tagNameList" item="tagName" open="(" separator="," close=")">
+                #{tagName}
+            </foreach>
+    </select>
+
+
+    <insert id="saveBatchTag">
+        insert into t_tag(tag_name) values
+        <foreach collection="newTagList" item="tag" separator=",">
+            (#{tag.tagName})
+        </foreach>
+    </insert>
 </mapper>

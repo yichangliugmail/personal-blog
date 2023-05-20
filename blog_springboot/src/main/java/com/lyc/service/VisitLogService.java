@@ -10,4 +10,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface VisitLogService extends IService<VisitLog> {
 
+    /**
+     * 保存异常日志数据
+     */
+    void saveVisitLog(VisitLog visitLog);
 }

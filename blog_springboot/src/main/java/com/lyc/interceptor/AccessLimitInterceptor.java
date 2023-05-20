@@ -37,7 +37,7 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             AccessLimit accessLimit = handlerMethod.getMethodAnnotation(AccessLimit.class);
-            //方法上没有访问控制的注解，直接通过
+            //方法没有限流注解，直接通过
             if (accessLimit != null) {
                 int seconds = accessLimit.seconds();
                 int maxCount = accessLimit.maxCount();
@@ -46,12 +46,17 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
                 String requestUri = request.getRequestURI();
                 String redisKey = ip + ":" + method + ":" + requestUri;
                 try {
+                    //每次访问加一
                     Long count = redisService.incr(redisKey, 1L);
                     // 第一次访问
                     if (Objects.nonNull(count) && count == 1) {
                         redisService.setExpire(redisKey, seconds, TimeUnit.SECONDS);
                     } else if (count > maxCount) {
                         WebUtils.renderString(response, JSON.toJSONString(Result.fail(null,500,accessLimit.msg())));
+                        /*
+                         * log:输出位置为日志系统，异步
+                         * System.out.print():输出位置为控制台，主线程执行
+                         */
                         log.warn(redisKey + "请求次数超过每" + seconds + "秒" + maxCount + "次");
                         result = false;
                     }

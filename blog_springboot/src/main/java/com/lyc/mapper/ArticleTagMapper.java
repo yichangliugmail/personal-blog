@@ -2,6 +2,9 @@ package com.lyc.mapper;
 
 import com.lyc.model.po.ArticleTag;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 蜡笔
@@ -11,6 +14,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface ArticleTagMapper extends BaseMapper<ArticleTag> {
 
+    void saveBatchArticleTag(@Param("articleId") Integer articleId,@Param("existTagIdList") List<Integer> existTagIdList);
 }
 
 

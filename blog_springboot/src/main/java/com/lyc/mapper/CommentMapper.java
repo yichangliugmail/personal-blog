@@ -3,6 +3,7 @@ package com.lyc.mapper;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lyc.model.vo.CommentBackVO;
 import com.lyc.model.vo.CommentVO;
 import com.lyc.model.vo.ReplyCountVO;
 import com.lyc.model.vo.ReplyVO;
@@ -39,6 +40,16 @@ public interface CommentMapper extends BaseMapper<Comment> {
      * 根据父评论id获取子评论集合
      */
     List<ReplyVO> selectReplyByParentId(@Param("limit") Long limit,@Param("size") Long size,@Param("commentId") String commentId);
+
+    /**
+     * 条件查询评论数量
+     */
+    Long commentCount(@Param("condition") ConditionDTO condition);
+
+    /**
+     * 后台评论集合
+     */
+    List<CommentBackVO> selectCommentBackVOList(@Param("limit") Long limit,@Param("size") Long size,@Param("condition") ConditionDTO condition);
 }
 
 

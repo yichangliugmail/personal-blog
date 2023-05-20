@@ -6,6 +6,7 @@ import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.MessageDTO;
 import com.lyc.model.po.Comment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lyc.model.vo.CommentBackVO;
 import com.lyc.model.vo.CommentVO;
 import com.lyc.model.vo.ReplyVO;
 
@@ -32,4 +33,9 @@ public interface CommentService extends IService<Comment> {
      * 获取评论集合
      */
     List<ReplyVO> replyList(String commentId);
+
+    /**
+     * 分页查询后台评论集合
+     */
+    PageResult<CommentBackVO> listCommentBackVO(ConditionDTO conditionDTO);
 }

@@ -19,6 +19,10 @@ import static com.lyc.constant.PageConstant.*;
  */
 public class PageableInterceptor implements HandlerInterceptor {
 
+    /**
+     * 预处理
+     * @param handler 当前拦截器的实例对象
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
         String currentPage = request.getParameter(CURRENT);

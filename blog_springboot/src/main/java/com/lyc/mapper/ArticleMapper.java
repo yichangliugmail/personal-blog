@@ -1,5 +1,6 @@
 package com.lyc.mapper;
 
+import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -50,6 +51,11 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * 编辑文章信息
      */
     ArticleInfoVO selectArticleInfo(@Param("articleId") Integer articleId);
+
+    /**
+     * 根据分类名查询分类id
+     */
+    Integer selectArticleCategoryId(@Param("categoryName") String categoryName);
 }
 
 
