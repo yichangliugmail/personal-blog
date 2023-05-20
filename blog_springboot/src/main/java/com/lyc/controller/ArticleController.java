@@ -93,5 +93,12 @@ public class ArticleController {
         return Result.success(articleService.getArticleInfo(articleId));
     }
 
+    @ApiOperation("修改文章")
+    @PutMapping("/admin/article/update")
+    public Result<?> updateArticle(@RequestBody ArticleDTO articleDTO){
+        articleService.updateArticle(articleDTO);
+        return Result.success(null);
+    }
+
 
 }

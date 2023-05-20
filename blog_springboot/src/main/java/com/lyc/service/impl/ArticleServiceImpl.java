@@ -1,6 +1,9 @@
 package com.lyc.service.impl;
 
+import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.constant.CommonConstant;
 import com.lyc.constant.ParamConstant;
@@ -29,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.lyc.constant.CommonConstant.FALSE;
 import static com.lyc.constant.RedisConstant.ARTICLE_LIKE_COUNT;
@@ -220,9 +224,73 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public ArticleInfoVO getArticleInfo(Integer articleId) {
-        ArticleInfoVO articleInfoVO=articleMapper.selectArticleInfo(articleId);
-        return articleInfoVO;
+        return articleMapper.selectArticleInfo(articleId);
     }
+
+    @Override
+    //@Transactional
+    public void updateArticle(ArticleDTO articleDTO) {
+        // 保存文章标签
+        saveArticleTag(articleDTO);
+
+        // 查询文章分类id
+        Category category = categoryMapper.selectOne(new LambdaQueryWrapper<Category>()
+                .select(Category::getId)
+                .like(Category::getCategoryName, articleDTO.getCategoryName()));
+        // 拷贝文章数据,保存文章
+        Article article = new Article();
+        BeanUtil.copyProperties(articleDTO,article,false);
+        article.setCategoryId(category.getId());
+        article.setUserId(StpUtil.getLoginIdAsInt());
+        articleMapper.updateById(article);
+
+    }
+
+    /**
+     * 保存文章标签
+     * @param articleDTO 修改信息
+     */
+    private void saveArticleTag(ArticleDTO articleDTO) {
+        //删除旧的标签
+        articleTagMapper.delete(new LambdaQueryWrapper<ArticleTag>()
+                .eq(ArticleTag::getArticleId, articleDTO.getId()));
+
+        // 标签名列表
+        List<String> tagNameList = articleDTO.getTagNameList();
+        if (CollectionUtils.isNotEmpty(tagNameList)) {
+            // 查询出已存在的标签
+            List<Tag> existTagList = tagMapper.selectTagList(tagNameList);
+            List<String> existTagNameList = existTagList.stream()
+                    .map(Tag::getTagName)
+                    .collect(Collectors.toList());
+            List<Integer> existTagIdList = existTagList.stream()
+                    .map(Tag::getId)
+                    .collect(Collectors.toList());
+            // 移除已存在的标签列表
+            tagNameList.removeAll(existTagNameList);
+            // 含有新标签
+            if (CollectionUtils.isNotEmpty(tagNameList)) {
+                // 新标签列表
+                List<Tag> newTagList = tagNameList.stream()
+                        .map(item -> Tag.builder()
+                                .tagName(item)
+                                .build())
+                        .collect(Collectors.toList());
+                // 批量保存新标签
+                tagMapper.saveBatchTag(newTagList);
+                // 获取新标签id列表
+                List<Integer> newTagIdList = newTagList.stream()
+                        .map(Tag::getId)
+                        .collect(Collectors.toList());
+                // 新标签id添加到id列表
+                existTagIdList.addAll(newTagIdList);
+            }
+            // 将所有的标签绑定到文章标签关联表
+            articleTagMapper.saveBatchArticleTag(articleDTO.getId(), existTagIdList);
+        }
+    }
+
+
 }
 
 

@@ -27,4 +27,5 @@ public class ArticleMapperTest {
         //Long aLong = articleMapper.selectCount(null);
         System.out.println("条件查询文章数量为："+aLong);
     }
+
 }

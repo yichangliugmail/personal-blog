@@ -53,5 +53,13 @@ public interface ArticleService extends IService<Article> {
      */
     void changeTop(TopDTO topDTO);
 
+    /**
+     * 获取文章数据
+     */
     ArticleInfoVO getArticleInfo(Integer articleId);
+
+    /**
+     * 更新文章
+     */
+    void updateArticle(ArticleDTO articleDTO);
 }

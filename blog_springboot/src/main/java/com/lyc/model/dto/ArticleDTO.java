@@ -74,7 +74,7 @@ public class ArticleDTO {
     private Integer isRecommend;
 
     /**
-     * 状态 (1公开 2私密 3草稿)
+     * 状态 (1 公开，2 私密，3 草稿)
      */
     @ApiModelProperty(value = "状态 (1公开 2私密 3草稿)")
     private Integer status;

@@ -6,11 +6,18 @@
 
     <resultMap id="BaseResultMap" type="com.lyc.model.po.ArticleTag">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="article_id" column="article_id" jdbcType="INTEGER"/>
-            <result property="tag_id" column="tag_id" jdbcType="INTEGER"/>
+            <result property="articleId" column="article_id" jdbcType="INTEGER"/>
+            <result property="tagId" column="tag_id" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,article_id,tag_id
     </sql>
+
+    <insert id="saveBatchArticleTag">
+        insert into t_article_tag(article_id,tag_id) values
+        <foreach collection="tagIdList" item="tagId" separator=",">
+            (#{articleId},#{tagId})
+        </foreach>
+    </insert>
 </mapper>

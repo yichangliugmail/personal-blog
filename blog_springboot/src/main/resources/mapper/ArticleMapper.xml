@@ -317,4 +317,14 @@
             INNER JOIN t_tag t ON tat.tag_id=t.id
         WHERE a.id=#{articleId}
     </select>
+
+    <select id="selectArticleCategoryId" resultType="java.lang.Integer">
+        SELECT
+            id
+        FROM
+            t_category
+        WHERE
+            category_name=#{categoryName}
+    </select>
+
 </mapper>
