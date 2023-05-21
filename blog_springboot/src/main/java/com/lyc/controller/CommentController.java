@@ -6,7 +6,6 @@ import com.lyc.common.Result;
 import com.lyc.model.dto.CommentDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.MessageDTO;
-import com.lyc.model.po.Comment;
 import com.lyc.model.po.Message;
 import com.lyc.model.vo.*;
 import com.lyc.service.CommentService;
@@ -71,9 +70,7 @@ public class CommentController {
     }
 
 
-
-
-    //=======留言板=======
+    //===================================留言板================================
 
     @ApiOperation("前台留言列表")
     @GetMapping("/message/list")
@@ -91,7 +88,14 @@ public class CommentController {
     @PostMapping("/message/add")
     public Result<Object> addMessage(@RequestBody MessageDTO messageDTO){
         messageService.addMessage(messageDTO);
-        return Result.success("发送成功");
+        return Result.success(null);
+    }
+
+    @ApiOperation("删除留言")
+    @DeleteMapping("/admin/message/delete")
+    public Result<Object> deleteMessage(@RequestBody List<Integer> messageList){
+        messageService.deleteMessage(messageList);
+        return Result.success(null);
     }
 
 
