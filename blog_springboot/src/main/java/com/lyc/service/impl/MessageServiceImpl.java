@@ -4,7 +4,6 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.common.PageResult;
-import com.lyc.constant.CommonConstant;
 import com.lyc.constant.ParamConstant;
 import com.lyc.handler.ServiceException;
 import com.lyc.model.dto.ConditionDTO;
@@ -13,19 +12,21 @@ import com.lyc.model.po.Message;
 import com.lyc.model.vo.MessageVO;
 import com.lyc.service.MessageService;
 import com.lyc.mapper.MessageMapper;
-import com.lyc.service.RedisService;
 import com.lyc.service.SiteConfigService;
 import com.lyc.utils.IpUtils;
 import com.lyc.utils.PageUtils;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
+
+import static com.lyc.enums.ZoneEnum.SHANGHAI;
 
 /**
 * @author 蜡笔
@@ -83,7 +84,8 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
             //游客头像，昵称
             String avatar = siteConfigService.getSiteConfig().getTouristAvatar();
             messageDTO.setAvatar(avatar);
-            messageDTO.setNickname("游客");
+            String nickName="游客"+ LocalDateTime.now();
+            messageDTO.setNickname(nickName.substring(0,12));
 
         }
 
@@ -99,6 +101,13 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
         messageMapper.insert(message);
     }
 
+    @Override
+    public void deleteMessage(List<Integer> messageList) {
+        int count = messageMapper.deleteBatchIds(messageList);
+        if(count==0){
+            throw new ServiceException("删除失败");
+        }
+    }
 
 
 }

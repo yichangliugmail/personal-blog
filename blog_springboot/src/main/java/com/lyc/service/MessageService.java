@@ -34,5 +34,9 @@ public interface MessageService extends IService<Message> {
      */
     void addMessage(MessageDTO messageDTO);
 
-
+    /**
+     * 删除用户留言
+     * @param messageList 留言id集合
+     */
+    void deleteMessage(List<Integer> messageList);
 }

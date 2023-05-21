@@ -150,17 +150,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         }
 
         //封装文章标签关系表
-        List<String> tagNameList = articleDTO.getTagNameList();
-        for(String tagName:tagNameList){
-            Tag tag = tagMapper.selectOne(new LambdaQueryWrapper<Tag>()
-                    .select(Tag::getId)
-                    .eq(Tag::getTagName, tagName));
-            //插入文章标签关系表
-            articleTagMapper.insert(ArticleTag.builder()
-                    .articleId(article.getId())
-                    .tagId(tag.getId())
-                    .build());
-        }
+        insertArticleTag(articleDTO, article.getId());
 
     }
 
@@ -228,10 +218,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    //@Transactional
+    @Transactional
     public void updateArticle(ArticleDTO articleDTO) {
-        // 保存文章标签
-        saveArticleTag(articleDTO);
+        //删除旧的标签
+        articleTagMapper.delete(new LambdaQueryWrapper<ArticleTag>()
+                .eq(ArticleTag::getArticleId, articleDTO.getId()));
+
+        //插入文章标签关系表
+        insertArticleTag(articleDTO, articleDTO.getId());
 
         // 查询文章分类id
         Category category = categoryMapper.selectOne(new LambdaQueryWrapper<Category>()
@@ -247,46 +241,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     /**
-     * 保存文章标签
-     * @param articleDTO 修改信息
+     * 插入文章标签关系表
+     * @param articleDTO 数据
+     * @param id 文章id
      */
-    private void saveArticleTag(ArticleDTO articleDTO) {
-        //删除旧的标签
-        articleTagMapper.delete(new LambdaQueryWrapper<ArticleTag>()
-                .eq(ArticleTag::getArticleId, articleDTO.getId()));
-
-        // 标签名列表
+    private void insertArticleTag(ArticleDTO articleDTO, Integer id) {
         List<String> tagNameList = articleDTO.getTagNameList();
-        if (CollectionUtils.isNotEmpty(tagNameList)) {
-            // 查询出已存在的标签
-            List<Tag> existTagList = tagMapper.selectTagList(tagNameList);
-            List<String> existTagNameList = existTagList.stream()
-                    .map(Tag::getTagName)
-                    .collect(Collectors.toList());
-            List<Integer> existTagIdList = existTagList.stream()
-                    .map(Tag::getId)
-                    .collect(Collectors.toList());
-            // 移除已存在的标签列表
-            tagNameList.removeAll(existTagNameList);
-            // 含有新标签
-            if (CollectionUtils.isNotEmpty(tagNameList)) {
-                // 新标签列表
-                List<Tag> newTagList = tagNameList.stream()
-                        .map(item -> Tag.builder()
-                                .tagName(item)
-                                .build())
-                        .collect(Collectors.toList());
-                // 批量保存新标签
-                tagMapper.saveBatchTag(newTagList);
-                // 获取新标签id列表
-                List<Integer> newTagIdList = newTagList.stream()
-                        .map(Tag::getId)
-                        .collect(Collectors.toList());
-                // 新标签id添加到id列表
-                existTagIdList.addAll(newTagIdList);
-            }
-            // 将所有的标签绑定到文章标签关联表
-            articleTagMapper.saveBatchArticleTag(articleDTO.getId(), existTagIdList);
+        for(String tagName:tagNameList){
+            Tag tag = tagMapper.selectOne(new LambdaQueryWrapper<Tag>()
+                    .select(Tag::getId)
+                    .eq(Tag::getTagName, tagName));
+            //插入文章标签关系表
+            articleTagMapper.insert(ArticleTag.builder()
+                    .articleId(id)
+                    .tagId(tag.getId())
+                    .build());
         }
     }
 

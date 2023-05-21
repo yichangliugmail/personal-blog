@@ -14,7 +14,7 @@ import java.util.List;
 */
 public interface ArticleTagMapper extends BaseMapper<ArticleTag> {
 
-    void saveBatchArticleTag(@Param("articleId") Integer articleId,@Param("existTagIdList") List<Integer> existTagIdList);
+    void saveBatchArticleTag(@Param("articleId") Integer articleId,List<Integer> existTagIdList);
 }
 
 
