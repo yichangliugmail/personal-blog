@@ -50,7 +50,6 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
         return messageMapper.selectMessageVoList();
     }
 
-
     @Override
     public PageResult<Message> listMessage(ConditionDTO condition) {
         PageResult<Message> pageResult = new PageResult<>();

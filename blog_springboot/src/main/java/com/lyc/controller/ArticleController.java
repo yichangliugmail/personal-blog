@@ -1,14 +1,18 @@
 package com.lyc.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import com.lyc.annotation.AccessLimit;
 import com.lyc.annotation.VisitLogger;
 import com.lyc.common.Result;
+import com.lyc.enums.LikeTypeEnum;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.vo.*;
 import com.lyc.common.PageResult;
 import com.lyc.service.ArticleService;
+import com.lyc.strategy.context.LikeStrategyContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -19,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-import static com.lyc.enums.StatusCodeEnum.SUCCESS;
 
 
 /**
@@ -33,6 +36,9 @@ import static com.lyc.enums.StatusCodeEnum.SUCCESS;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private LikeStrategyContext likeStrategyContext;
 
     @ApiOperation("获取后台文章集合")
     @SaCheckPermission("blog:article:list")
@@ -100,5 +106,13 @@ public class ArticleController {
         return Result.success(null);
     }
 
+    @ApiOperation("点赞文章")
+    @AccessLimit(seconds = 60,maxCount = 3)
+    @SaCheckLogin
+    @PostMapping("/article/{articleId}/like")
+    public Result<Object> likeArticle(@PathVariable("articleId") Integer articleId){
+        likeStrategyContext.executeLikeStrategy(LikeTypeEnum.ARTICLE,articleId);
+        return Result.success(null);
+    }
 
 }
