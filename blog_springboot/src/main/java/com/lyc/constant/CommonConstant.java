@@ -77,5 +77,4 @@ public class CommonConstant {
      */
     public final static String UPLOAD_FAIL="文件上传失败";
 
-
 }

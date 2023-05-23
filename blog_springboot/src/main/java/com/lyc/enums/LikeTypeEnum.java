@@ -4,37 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 点赞类型枚举
+ * 点赞类型枚举类
  *
  * @author 刘怡畅
  */
+
 @Getter
 @AllArgsConstructor
 public enum LikeTypeEnum {
 
-    /**
-     * 文章
-     */
-    ARTICLE("文章", "articleLikeStrategyImpl"),
+    //文章点赞策略
+    ARTICLE("文章","ArticleLikeStrategy"),
 
-    /**
-     * 评论
-     */
-    COMMENT("评论", "commentLikeStrategyImpl"),
+    //评论点赞策略
+    COMMENT("评论","CommentLikeStrategy");
 
-    /**
-     * 说说
-     */
-    TALK("说说", "talkLikeStrategyImpl");
+    //点赞类型
+    private final String type;
 
-    /**
-     * 点赞类型
-     */
-    private final String likeType;
-
-    /**
-     * 策略
-     */
+    //点赞策略
     private final String strategy;
 
 }
