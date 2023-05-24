@@ -6,6 +6,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.lyc.annotation.AccessLimit;
 import com.lyc.common.Result;
 import com.lyc.model.dto.LoginDTO;
+import com.lyc.model.dto.RegisterDTO;
 import com.lyc.model.vo.*;
 import com.lyc.service.UserService;
 import io.swagger.annotations.Api;
@@ -97,6 +98,13 @@ public class UserController {
     @GetMapping("/code")
     public Result<?> sendCode(String username){
         userService.sendCode(username);
+        return Result.success(null);
+    }
+
+    @ApiOperation(value = "用户邮箱注册")
+    @PostMapping("/register")
+    public Result<?> register(@Validated @RequestBody RegisterDTO register) {
+        userService.register(register);
         return Result.success(null);
     }
 
