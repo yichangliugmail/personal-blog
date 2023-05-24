@@ -1,6 +1,7 @@
 package com.lyc.service;
 
 import com.lyc.model.dto.LoginDTO;
+import com.lyc.model.dto.RegisterDTO;
 import com.lyc.model.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lyc.model.vo.*;
@@ -34,4 +35,10 @@ public interface UserService extends IService<User> {
      * @param username 邮箱账号
      */
     void sendCode(String username);
+
+    /**
+     * 邮箱注册账号
+     * @param register 注册信息
+     */
+    void register(RegisterDTO register);
 }

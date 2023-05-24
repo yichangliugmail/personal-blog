@@ -5,12 +5,17 @@ import cn.hutool.captcha.generator.RandomGenerator;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.mapper.MenuMapper;
 import com.lyc.mapper.RoleMapper;
+import com.lyc.mapper.UserRoleMapper;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.MailDTO;
+import com.lyc.model.dto.RegisterDTO;
+import com.lyc.model.po.SiteConfig;
 import com.lyc.model.po.User;
+import com.lyc.model.po.UserRole;
 import com.lyc.model.vo.*;
 import com.lyc.service.RedisService;
 import com.lyc.service.UserService;
@@ -20,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -32,8 +38,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.lyc.constant.CommonConstant.*;
+import static com.lyc.constant.ParamConstant.USER_NICKNAME;
 import static com.lyc.constant.RedisConstant.*;
 import static com.lyc.constant.MqConstant.*;
+import static com.lyc.enums.LoginTypeEnum.EMAIL;
+import static com.lyc.enums.RoleEnum.USER;
 
 /**
 * @author 蜡笔
@@ -57,6 +66,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+    @Resource
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public String login(LoginDTO login) {
@@ -152,13 +164,41 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         MailDTO mailDTO=MailDTO.builder()
                 .toEmail(username)
                 .subject(IDENTIFY_CODE)
-                .content("【博客账号注册】 您的验证码为 "+identifyCode+" ,有限期为 "+CODE_EXPIRE_TIME+" 分钟。")
+                .content("[论坛账号注册] 您的验证码为： "+identifyCode+" ,有效期 "+CODE_EXPIRE_TIME+" 分钟，请不要告诉别人哦")
                 .build();
         //通过消息队列向邮箱发送验证码
         rabbitTemplate.convertAndSend(EMAIL_EXCHANGE,EMAIL_SIMPLE_KEY,mailDTO);
         //验证码存入redis
         redisService.setObject(CODE_KEY+username,identifyCode,CODE_EXPIRE_TIME, TimeUnit.MINUTES);
 
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void register(RegisterDTO register) {
+        verifyCode(register.getUsername(), register.getCode());
+        User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
+                .select(User::getUsername)
+                .eq(User::getUsername, register.getUsername()));
+        Assert.isNull(user, "邮箱已注册！");
+        SiteConfig siteConfig = redisService.getObject(SITE_SETTING);
+        // 添加用户
+        User newUser = User.builder()
+                .username(register.getUsername())
+                .email(register.getUsername())
+                .nickname(USER_NICKNAME + IdWorker.getId())
+                .avatar(siteConfig.getUserAvatar())
+                .password(SecurityUtil.sha256Encrypt(register.getPassword()))
+                .loginType(EMAIL.getLoginType())
+                .isDisable(FALSE)
+                .build();
+        userMapper.insert(newUser);
+        // 绑定用户角色
+        UserRole userRole = UserRole.builder()
+                .userId(newUser.getId())
+                .roleId(USER.getRoleId())
+                .build();
+        userRoleMapper.insert(userRole);
     }
 
     /**
