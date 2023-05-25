@@ -1,8 +1,13 @@
 package com.lyc.mapper;
 
+import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.Album;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lyc.model.vo.AlbumBackVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 蜡笔
@@ -12,6 +17,13 @@ import org.apache.ibatis.annotations.Mapper;
 */
 public interface AlbumMapper extends BaseMapper<Album> {
 
+    /**
+     * 条件查询相册数据
+     * @param limit 数据起始位置
+     * @param size 本页数据量
+     * @param condition 条件
+     */
+    List<AlbumBackVO> selectAlbumBackVOList(@Param("limit") Long limit,@Param("size") Long size,@Param("condition") ConditionDTO condition);
 }
 
 

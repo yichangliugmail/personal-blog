@@ -6,12 +6,12 @@
 
     <resultMap id="BaseResultMap" type="com.lyc.model.po.Album">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="album_name" column="album_name" jdbcType="VARCHAR"/>
-            <result property="album_cover" column="album_cover" jdbcType="VARCHAR"/>
-            <result property="album_desc" column="album_desc" jdbcType="VARCHAR"/>
+            <result property="albumName" column="album_name" jdbcType="VARCHAR"/>
+            <result property="albumCover" column="album_cover" jdbcType="VARCHAR"/>
+            <result property="albumDesc" column="album_desc" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
-            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -19,4 +19,26 @@
         album_desc,status,create_time,
         update_time
     </sql>
+    
+    <select id="selectAlbumBackVOList" resultType="com.lyc.model.vo.AlbumBackVO">
+        SELECT 
+            a.id,
+            album_name,
+            album_cover,
+            album_desc,
+            status,
+            COUNT(p.id) AS photo_count
+        FROM 
+            t_album a
+            LEFT JOIN t_photo p on a.id = p.album_id
+        <where>
+            <if test="condition.keyword!=null">
+                album_name like concat('%',#{condition.keyword},'%')
+            </if>
+        </where>
+        GROUP BY a.id
+        ORDER BY a.id DESC
+        LIMIT #{limit},#{size}
+
+    </select>
 </mapper>
