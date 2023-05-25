@@ -27,7 +27,7 @@ public class ConditionDTO {
     private Long size;
 
     /**
-     * 搜索内容
+     * 搜索内容,关键字
      */
     @ApiModelProperty(value = "搜索内容")
     private String keyword;

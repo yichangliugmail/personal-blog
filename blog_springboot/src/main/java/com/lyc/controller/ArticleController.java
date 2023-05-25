@@ -40,7 +40,7 @@ public class ArticleController {
     @Autowired
     private LikeStrategyContext likeStrategyContext;
 
-    @ApiOperation("获取后台文章集合")
+    @ApiOperation("后台文章列表")
     @SaCheckPermission("blog:article:list")
     @GetMapping("/admin/article/list")
     public Result<PageResult<ArticleBackVO>> getBackArticleList(ConditionDTO conditionDTO){
@@ -48,7 +48,7 @@ public class ArticleController {
         return Result.success(articleLists);
     }
 
-    @ApiOperation("上传文章风封面图片")
+    @ApiOperation("上传文章封面图片")
     @SaCheckPermission("blog:article:upload")
     @ApiImplicitParam(name = "file", value = "文章图片", required = true, dataType = "MultipartFile")
     @PostMapping("/admin/article/upload")
@@ -67,7 +67,7 @@ public class ArticleController {
 
 
     @VisitLogger(value = "首页")
-    @ApiOperation(value = "查看首页文章列表")
+    @ApiOperation(value = "首页文章列表")
     @GetMapping("/article/list")
     public Result<PageResult<ArticleHomeVO>> listArticleHomeVO() {
         return Result.success(articleService.listArticleHomeVO());
@@ -92,7 +92,7 @@ public class ArticleController {
         return Result.success(null);
     }
 
-    @ApiOperation("获取文章信息用于编辑")
+    @ApiOperation("获取文章数据用于编辑")
     @SaCheckPermission("blog:article:edit")
     @GetMapping("/admin/article/edit/{articleId}")
     public Result<ArticleInfoVO> getArticleInfo(@PathVariable Integer articleId){

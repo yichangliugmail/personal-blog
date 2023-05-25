@@ -3,7 +3,7 @@
   <div class="message-container">
     <h1 class="message-title">留言板</h1>
     <div class="message-input">
-      <input class="input" v-model="messageContent" @click="show = true" @keyup.enter="send" placeholder="说点什么吧" />
+      <input class="input" v-model="messageContent" @click="show = true" @keyup.enter="send" placeholder="说点什么呗" />
       <button class="send" @click="send" v-show="show">发送</button>
     </div>
   </div>

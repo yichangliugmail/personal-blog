@@ -163,7 +163,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         if (count == 0) {
             return new PageResult<>();
         }
-        // 查询首页文章
+        // 分页查询首页文章
         List<ArticleHomeVO> articleHomeVOList = articleMapper.selectArticleHomeList(PageUtils.getLimit(), PageUtils.getSize());
         return new PageResult<>(articleHomeVOList, count);
     }
