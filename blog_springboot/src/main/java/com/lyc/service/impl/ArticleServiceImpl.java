@@ -11,6 +11,7 @@ import com.lyc.handler.ServiceException;
 import com.lyc.mapper.*;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.RecommendDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.po.*;
 import com.lyc.model.vo.*;
@@ -238,6 +239,13 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         article.setUserId(StpUtil.getLoginIdAsInt());
         articleMapper.updateById(article);
 
+    }
+
+    @Override
+    public void recommendArticle(RecommendDTO recommend) {
+        Article article = articleMapper.selectById(recommend.getId());
+        article.setIsRecommend(recommend.getIsRecommend());
+        articleMapper.updateById(article);
     }
 
     /**

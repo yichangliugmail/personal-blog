@@ -36,7 +36,6 @@ public class StpInterfaceImpl implements StpInterface {
      */
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
-        // 声明权限码集合
         List<String> permissionList = new ArrayList<>();
         // 遍历角色列表，查询拥有的权限码
         for (String roleId : getRoleList(loginId, loginType)) {

@@ -25,7 +25,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @ApiOperation("h获取标签集合")
+    @ApiOperation("获取标签集合")
     @GetMapping("/admin/tag/option")
     public Result<List<TagOptionVO>> getTagOption(){
         List<TagOptionVO> tagOptionVOList=tagService.getTagOptionVoList();

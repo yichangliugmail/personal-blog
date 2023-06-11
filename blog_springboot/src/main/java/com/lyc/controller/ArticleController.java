@@ -8,6 +8,7 @@ import com.lyc.common.Result;
 import com.lyc.enums.LikeTypeEnum;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.RecommendDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.vo.*;
 import com.lyc.common.PageResult;
@@ -115,4 +116,11 @@ public class ArticleController {
         return Result.success(null);
     }
 
+    @ApiOperation("文章推荐")
+    @PutMapping("/admin/article/recommend")
+    @SaCheckLogin
+    public Result<?> recommendArticle(@RequestBody RecommendDTO recommendDTO){
+        articleService.recommendArticle(recommendDTO);
+        return Result.success(null);
+    }
 }

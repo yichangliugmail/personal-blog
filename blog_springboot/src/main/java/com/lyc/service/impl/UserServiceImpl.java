@@ -13,6 +13,7 @@ import com.lyc.mapper.UserRoleMapper;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.MailDTO;
 import com.lyc.model.dto.RegisterDTO;
+import com.lyc.model.dto.UserInfoDTO;
 import com.lyc.model.po.SiteConfig;
 import com.lyc.model.po.User;
 import com.lyc.model.po.UserRole;
@@ -176,6 +177,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void register(RegisterDTO register) {
+        //校验验证码
         verifyCode(register.getUsername(), register.getCode());
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>()
                 .select(User::getUsername)
@@ -193,12 +195,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .isDisable(FALSE)
                 .build();
         userMapper.insert(newUser);
-        // 绑定用户角色
+        // 绑定普通用户角色
         UserRole userRole = UserRole.builder()
                 .userId(newUser.getId())
                 .roleId(USER.getRoleId())
                 .build();
         userRoleMapper.insert(userRole);
+    }
+
+    @Override
+    public void saveUserInfo(UserInfoDTO userInfo) {
+        int userId = StpUtil.getLoginIdAsInt();
+        User user = User.builder()
+                .id(userId)
+                .nickname(userInfo.getNickname())
+                .intro(userInfo.getIntro())
+                .webSite(userInfo.getWebSite())
+                .build();
+        userMapper.updateById(user);
     }
 
     /**
@@ -225,8 +239,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @param code     验证码
      */
     public void verifyCode(String username, String code) {
+        //从Redis缓存中获取验证码
         String sysCode = redisService.getObject(CODE_KEY + username);
+        //为空
         Assert.notBlank(sysCode, "验证码未发送或已过期！");
+        //验证码错误
         Assert.isTrue(sysCode.equals(code), "验证码错误，请重新输入！");
     }
 

@@ -65,8 +65,8 @@ const dialogVisible = computed({
   set: (value) => app.emailFlag = value,
 });
 const handleUpdate = () => {
-  if (emailForm.value.code.trim().length != 6) {
-    window.$message?.warning("请输入6位验证码");
+  if (emailForm.value.code.trim().length != 5) {
+    window.$message?.warning("请输入5位验证码");
     return;
   }
   loading.value = true;

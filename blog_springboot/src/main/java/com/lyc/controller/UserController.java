@@ -7,6 +7,7 @@ import com.lyc.annotation.AccessLimit;
 import com.lyc.common.Result;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.RegisterDTO;
+import com.lyc.model.dto.UserInfoDTO;
 import com.lyc.model.vo.*;
 import com.lyc.service.UserService;
 import io.swagger.annotations.Api;
@@ -105,6 +106,14 @@ public class UserController {
     @PostMapping("/register")
     public Result<?> register(@Validated @RequestBody RegisterDTO register) {
         userService.register(register);
+        return Result.success(null);
+    }
+
+    @ApiOperation("修改前台用户信息")
+    @SaCheckLogin
+    @PutMapping("/user/info")
+    public Result<?> saveUserInfo(UserInfoDTO userInfoDTO){
+        userService.saveUserInfo(userInfoDTO);
         return Result.success(null);
     }
 

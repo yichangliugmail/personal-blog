@@ -1,7 +1,12 @@
 package com.lyc.mapper;
 
+import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.Task;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lyc.model.vo.TaskBackVO;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 蜡笔
@@ -11,6 +16,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface TaskMapper extends BaseMapper<Task> {
 
+    List<TaskBackVO> selectTaskBackVOList(@Param("limit") Long limit,@Param("size") Long size,@Param("condition") ConditionDTO condition);
 }
 
 

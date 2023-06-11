@@ -46,9 +46,9 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
                 String requestUri = request.getRequestURI();
                 String redisKey = ip + ":" + method + ":" + requestUri;
                 try {
-                    //每次访问加一
+                    // 每一次访问自增1，返回自增后value的大小
                     Long count = redisService.incr(redisKey, 1L);
-                    // 第一次访问
+                    // 对第一次访问，设置一个超时时间
                     if (Objects.nonNull(count) && count == 1) {
                         redisService.setExpire(redisKey, seconds, TimeUnit.SECONDS);
                     } else if (count > maxCount) {
