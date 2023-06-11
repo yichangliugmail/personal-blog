@@ -23,3 +23,38 @@
 
 项目已部署至阿里云服务器：http://47.113.219.142
 项目文档：[博客API文档](http://47.113.219.142:5173/api/doc.html#/home)
+
+## 技术介绍
+
+**前端：** Vue3 + Pinia + Vue Router + TypeScript + Axios + Element Plus + Naive UI + Echarts + Swiper
+
+**后端：** SpringBoot + Mysql + Redis + Quartz + Thymeleaf + Nginx + Docker + Sa-Token + Swagger2 + MyBatisPlus + RabbitMQ + Canal
+
+**其他：** 
+
+## 运行环境
+
+**服务器：** 阿里云 2 核 2G CentOS7.9
+
+**对象存储：** 腾讯云 COS
+
+**最低配置：** 2 核 2G 服务器（关闭 ElasticSearch）
+
+## 开发环境
+
+| 开发工具              | 说明               |
+| --------------------- | ------------------ |
+| IDEA                  | Java 开发工具 IDE  |
+| VSCode                | Vue 开发工具 IDE   |
+| Navicat               | MySQL 远程连接工具 |
+| Redis Desktop Manager | Redis 远程连接工具 |
+| Xshell                | Linux 远程连接工具 |
+| Xftp                  | Linux 文件上传工具 |
+
+| 开发环境 | 版本   |
+| -------- | ------ |
+| OpenJDK  | 11     |
+| MySQL    | 8.0.27 |
+| Redis    | 6.2.6  |
+|          |        |
+| RabbitMQ | 3.9.11 |

@@ -2,6 +2,7 @@ package com.lyc.service;
 
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.RecommendDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.po.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -62,4 +63,9 @@ public interface ArticleService extends IService<Article> {
      * 更新文章
      */
     void updateArticle(ArticleDTO articleDTO);
+
+    /**
+     * 文章推荐
+     */
+    void recommendArticle(RecommendDTO recommend);
 }

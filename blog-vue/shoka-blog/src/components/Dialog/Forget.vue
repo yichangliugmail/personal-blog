@@ -64,8 +64,8 @@ const sendCode = () => {
   });
 };
 const handleForget = () => {
-  if (forgetForm.value.code.trim().length != 6) {
-    window.$message?.warning("请输入6位验证码");
+  if (forgetForm.value.code.trim().length != 5) {
+    window.$message?.warning("请输入5位验证码");
     return;
   }
   if (forgetForm.value.password.trim().length < 6) {

@@ -67,8 +67,8 @@ const sendCode = () => {
   });
 };
 const handleRegister = () => {
-  if (registerForm.value.code.trim().length != 6) {
-    window.$message?.warning("请输入6位验证码");
+  if (registerForm.value.code.trim().length != 5) {
+    window.$message?.warning("请输入5位验证码");
     return;
   }
   if (registerForm.value.password.trim().length < 6) {

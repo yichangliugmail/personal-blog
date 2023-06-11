@@ -16,7 +16,7 @@ public enum RoleEnum {
      */
     ADMIN("1", "admin"),
     /**
-     * 用户
+     * 普通用户
      */
     USER("2", "user"),
     /**

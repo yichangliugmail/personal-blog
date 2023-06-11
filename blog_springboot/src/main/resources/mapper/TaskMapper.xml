@@ -6,16 +6,16 @@
 
     <resultMap id="BaseResultMap" type="com.lyc.model.po.Task">
             <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="task_name" column="task_name" jdbcType="VARCHAR"/>
-            <result property="task_group" column="task_group" jdbcType="VARCHAR"/>
-            <result property="invoke_target" column="invoke_target" jdbcType="VARCHAR"/>
-            <result property="cron_expression" column="cron_expression" jdbcType="VARCHAR"/>
-            <result property="misfire_policy" column="misfire_policy" jdbcType="TINYINT"/>
+            <result property="taskName" column="task_name" jdbcType="VARCHAR"/>
+            <result property="taskGroup" column="task_group" jdbcType="VARCHAR"/>
+            <result property="invokeTarget" column="invoke_target" jdbcType="VARCHAR"/>
+            <result property="cronExpression" column="cron_expression" jdbcType="VARCHAR"/>
+            <result property="misfirePolicy" column="misfire_policy" jdbcType="TINYINT"/>
             <result property="concurrent" column="concurrent" jdbcType="TINYINT"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
             <result property="remark" column="remark" jdbcType="VARCHAR"/>
-            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -24,4 +24,33 @@
         concurrent,status,remark,
         create_time,update_time
     </sql>
+
+    <select id="selectTaskBackVOList" resultType="com.lyc.model.vo.TaskBackVO">
+        SELECT
+            id,
+            task_name,
+            task_group,
+            invoke_target,
+            cron_expression,
+            misfire_policy,
+            concurrent,
+            status,
+            remark,
+            create_time
+        FROM
+            t_task
+        <where>
+            <if test="condition.keyword!=null">
+                task_name LIKE CONCAT('%',#{condition.keyword},'%')
+            </if>
+            <if test="condition.taskGroup!=null">
+                AND task_group LIKE CONCAT('%',#{condition.taskGroup},'%')
+            </if>
+            <if test="condition.status!=null">
+                AND status = #{condition.status}
+            </if>
+        </where>
+        ORDER BY id
+        LIMIT #{limit},#{size}
+    </select>
 </mapper>
