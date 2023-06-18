@@ -34,27 +34,7 @@
         WHERE rm.role_id = #{roleId}
           AND m.is_disable = 0
     </select>
-    <select id="selectMenuByUserId" resultType="com.lyc.model.vo.UserMenuVO">
-        SELECT DISTINCT m.id,
-                        m.parent_id,
-                        m.menu_name,
-                        m.menu_type,
-                        m.path,
-                        m.icon,
-                        m.order_num,
-                        m.component,
-                        m.is_hidden
-        FROM t_menu m
-                 INNER JOIN t_role_menu rm ON m.id = rm.menu_id
-                 INNER JOIN t_user_role ur ON rm.role_id = ur.role_id
-                 INNER JOIN t_role r ON ur.role_id = r.id
-        WHERE m.menu_type in ('M', 'C')
-          AND m.is_disable = 0
-          AND r.is_disable = 0
-          AND ur.user_id = #{userId}
-        ORDER BY m.parent_id, m.order_num
 
-    </select>
     <select id="selectMenuVOList" resultType="com.lyc.model.vo.MenuVO">
         SELECT id,
         parent_id,
@@ -78,5 +58,61 @@
             </if>
         </where>
         order by order_num
+    </select>
+
+    <select id="selectMenuByUserId" resultType="com.lyc.model.vo.UserMenuVO">
+        SELECT DISTINCT m.id,
+                        m.parent_id,
+                        m.menu_name,
+                        m.menu_type,
+                        m.path,
+                        m.icon,
+                        m.order_num,
+                        m.component,
+                        m.is_hidden
+        FROM t_menu m
+                 INNER JOIN t_role_menu rm ON m.id = rm.menu_id
+                 INNER JOIN t_user_role ur ON rm.role_id = ur.role_id
+                 INNER JOIN t_role r ON ur.role_id = r.id
+        WHERE m.menu_type in ('M', 'C')
+          AND m.is_disable = 0
+          AND r.is_disable = 0
+          AND ur.user_id = #{userId}
+        ORDER BY m.parent_id, m.order_num
+    </select>
+
+    <select id="selectMenuTree" resultType="com.lyc.model.vo.MenuTree">
+        SELECT id,
+               parent_id,
+               menu_name as label
+        FROM t_menu
+        WHERE is_disable = 0
+        ORDER BY order_num
+    </select>
+
+    <select id="selectMenuOptions" resultType="com.lyc.model.vo.MenuOption">
+        SELECT id        as `value`,
+               parent_id,
+               menu_name as label
+        FROM t_menu
+        WHERE is_disable = 0
+          AND menu_type IN ('M', 'C')
+        ORDER BY order_num
+    </select>
+
+    <select id="selectMenuById" resultType="com.lyc.model.dto.MenuDTO">
+        SELECT id,
+               parent_id,
+               menu_type,
+               menu_name,
+               path,
+               icon,
+               component,
+               perms,
+               is_hidden,
+               is_disable,
+               order_num
+        FROM t_menu
+        WHERE id = #{menuId}
     </select>
 </mapper>

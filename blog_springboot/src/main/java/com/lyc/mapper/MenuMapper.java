@@ -1,8 +1,11 @@
 package com.lyc.mapper;
 
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.MenuDTO;
 import com.lyc.model.po.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lyc.model.vo.MenuOption;
+import com.lyc.model.vo.MenuTree;
 import com.lyc.model.vo.MenuVO;
 import com.lyc.model.vo.UserMenuVO;
 import org.apache.ibatis.annotations.Param;
@@ -17,12 +20,51 @@ import java.util.List;
 */
 public interface MenuMapper extends BaseMapper<Menu> {
 
-    List<String> selectPermissionByRoleId(String roleId);
+    /**
+     * 根据角色id查询对应权限
+     *
+     * @param roleId id
+     * @return 权限标识
+     */
+    List<String> selectPermissionByRoleId(@Param("roleId") String roleId);
 
-    List<UserMenuVO> selectMenuByUserId(int loginIdAsInt);
-
+    /**
+     * 查询菜单列表
+     *
+     * @param condition 查询条件
+     * @return 菜单列表
+     */
     List<MenuVO> selectMenuVOList(@Param("condition") ConditionDTO condition);
 
+    /**
+     * 根据用户id查询用户菜单列表
+     *
+     * @param userId 用户id
+     * @return 用户菜单列表
+     */
+    List<UserMenuVO> selectMenuByUserId(@Param("userId") Integer userId);
+
+    /**
+     * 查询菜单下拉树
+     *
+     * @return 菜单下拉树
+     */
+    List<MenuTree> selectMenuTree();
+
+    /**
+     * 查询菜单选项树
+     *
+     * @return 菜单选项树
+     */
+    List<MenuOption> selectMenuOptions();
+
+    /**
+     * 根据id查询菜单信息
+     *
+     * @param menuId 菜单id
+     * @return 菜单
+     */
+    MenuDTO selectMenuById(@Param("menuId") Integer menuId);
 }
 
 

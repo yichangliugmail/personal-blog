@@ -24,6 +24,11 @@
         concurrent,status,remark,
         create_time,update_time
     </sql>
+    <update id="updateStatusById">
+        UPDATE t_task
+        SET status=#{status}
+        WHERE id=#{taskId}
+    </update>
 
     <select id="selectTaskBackVOList" resultType="com.lyc.model.vo.TaskBackVO">
         SELECT
