@@ -6,12 +6,14 @@ import com.lyc.common.PageResult;
 import com.lyc.common.Result;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.vo.TaskBackVO;
+import com.lyc.model.vo.TaskStatusVO;
 import com.lyc.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -32,5 +34,13 @@ public class TaskController {
     public Result<PageResult<TaskBackVO>> getTaskBackVOList(ConditionDTO conditionDTO){
         PageResult<TaskBackVO> taskList=taskService.getTaskBackVOList(conditionDTO);
         return Result.success(taskList);
+    }
+
+    @ApiOperation("修改定时任务状态")
+    @SaCheckPermission("monitor:task:status")
+    @PutMapping("/admin/task/changeStatus")
+    public Result<Object> changeStatus(@RequestBody TaskStatusVO taskStatusVO){
+        taskService.changeStatus(taskStatusVO);
+        return Result.success(null);
     }
 }

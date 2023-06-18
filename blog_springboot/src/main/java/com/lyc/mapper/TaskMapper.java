@@ -17,6 +17,13 @@ import java.util.List;
 public interface TaskMapper extends BaseMapper<Task> {
 
     List<TaskBackVO> selectTaskBackVOList(@Param("limit") Long limit,@Param("size") Long size,@Param("condition") ConditionDTO condition);
+
+    /**
+     * 根据id修改定时任务状态
+     * @param taskId id
+     * @param status 状态
+     */
+    void updateStatusById(@Param("taskId") Integer taskId,@Param("status") int status);
 }
 
 

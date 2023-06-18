@@ -6,6 +6,7 @@ import com.lyc.common.PageResult;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.Task;
 import com.lyc.model.vo.TaskBackVO;
+import com.lyc.model.vo.TaskStatusVO;
 import com.lyc.service.TaskService;
 import com.lyc.mapper.TaskMapper;
 import com.lyc.quartz.utils.CronUtils;
@@ -52,6 +53,18 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements Ta
             }
         });
         return new PageResult<>(taskBackVOList, count);
+    }
+
+    @Override
+    public void changeStatus(TaskStatusVO taskStatusVO) {
+        Integer taskId = taskStatusVO.getId();
+        Integer status = taskStatusVO.getStatus();
+        if(status==0){
+            taskMapper.updateStatusById(taskId,1);
+        }else {
+            taskMapper.updateStatusById(taskId,0);
+        }
+
     }
 }
 
