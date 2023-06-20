@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 自定义配置属性，cos
+ * 自定义腾讯云 COS 属性配置
  *
  * @author 刘怡畅
  */

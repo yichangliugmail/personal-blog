@@ -16,6 +16,12 @@ import java.util.List;
 public interface VisitLogMapper extends BaseMapper<VisitLog> {
 
     List<UserViewVO> selectUserViewList(DateTime startTime, DateTime endTime);
+
+    /**
+     * 清除日志
+     * @param endTime 执行时间
+     */
+    void deleteVisitLog(DateTime endTime);
 }
 
 

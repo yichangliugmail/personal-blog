@@ -15,22 +15,22 @@ import org.springframework.context.annotation.Configuration;
 public class ThreadPoolProperties {
 
     /**
-     * 核心线程池大小
+     * 核心线程数
      */
     private int corePoolSize;
 
     /**
-     * 最大可创建的线程数
+     * 最大线程数
      */
     private int maxPoolSize;
 
     /**
-     * 线程队列最大长度
+     * 线程队列长度
      */
     private int queueCapacity;
 
     /**
-     * 线程池维护线程所允许的空闲时间
+     * 空闲线程存活时间
      */
     private int keepAliveSeconds;
 
