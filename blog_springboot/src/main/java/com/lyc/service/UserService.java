@@ -1,5 +1,6 @@
 package com.lyc.service;
 
+import com.lyc.model.dto.CodeDTO;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.RegisterDTO;
 import com.lyc.model.dto.UserInfoDTO;
@@ -48,4 +49,10 @@ public interface UserService extends IService<User> {
      * @param userInfoDTO 用户信息
      */
     void saveUserInfo(UserInfoDTO userInfoDTO);
+
+    /**
+     * 实现 gitee 登录
+     * @param codeDTO 授权参数
+     */
+    String giteeLogin(CodeDTO codeDTO);
 }

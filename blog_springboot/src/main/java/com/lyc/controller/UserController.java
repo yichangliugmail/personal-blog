@@ -34,30 +34,6 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 后台登录
-     * @return 携带Token返回
-     */
-    @ApiOperation(value = "后台登录")
-    @PostMapping("/login")
-    public Result<String> login(@Validated @RequestBody LoginDTO loginDto){
-        String token = userService.login(loginDto);
-        return Result.success(token);
-    }
-
-    /**
-     * 退出登录
-     * SaCheckLogin 鉴权，只有登录用户才能操作,但是token失效后，就会找不到token报错
-     * @return rr
-     */
-    //@SaCheckLogin
-    @ApiOperation(value = "用户退出")
-    @GetMapping("/logout")
-    public Result<?> logout() {
-        StpUtil.logout();
-        return Result.success(null,SUCCESS.getCode(),SUCCESS.getMsg());
-    }
-
-    /**
      * 获取前台登录用户信息
      *
      * @return {@link UserInfoVO} 用户信息
@@ -94,20 +70,7 @@ public class UserController {
         return Result.success(userService.listUserRoleDTO(),SUCCESS.getCode(),"查看用户角色选项");
     }
 
-    @AccessLimit(seconds = 60,maxCount = 1)
-    @ApiOperation("向邮箱发送验证码")
-    @GetMapping("/code")
-    public Result<?> sendCode(String username){
-        userService.sendCode(username);
-        return Result.success(null);
-    }
 
-    @ApiOperation(value = "用户邮箱注册")
-    @PostMapping("/register")
-    public Result<?> register(@Validated @RequestBody RegisterDTO register) {
-        userService.register(register);
-        return Result.success(null);
-    }
 
     @ApiOperation("修改前台用户信息")
     @SaCheckLogin
@@ -116,7 +79,6 @@ public class UserController {
         userService.saveUserInfo(userInfoDTO);
         return Result.success(null);
     }
-
 
 
 }

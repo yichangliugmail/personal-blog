@@ -18,7 +18,7 @@
       <Email></Email>
       <Drawer></Drawer>
       <MusicPlayer></MusicPlayer>
-      <ChatRoom></ChatRoom>
+      <!-- <ChatRoom></ChatRoom> -->
     </div>
   </Provider>
 </template>
