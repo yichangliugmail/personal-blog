@@ -7,13 +7,11 @@ import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lyc.enums.LoginTypeEnum;
 import com.lyc.mapper.MenuMapper;
 import com.lyc.mapper.RoleMapper;
 import com.lyc.mapper.UserRoleMapper;
-import com.lyc.model.dto.LoginDTO;
-import com.lyc.model.dto.MailDTO;
-import com.lyc.model.dto.RegisterDTO;
-import com.lyc.model.dto.UserInfoDTO;
+import com.lyc.model.dto.*;
 import com.lyc.model.po.SiteConfig;
 import com.lyc.model.po.User;
 import com.lyc.model.po.UserRole;
@@ -21,6 +19,8 @@ import com.lyc.model.vo.*;
 import com.lyc.service.RedisService;
 import com.lyc.service.UserService;
 import com.lyc.mapper.UserMapper;
+import com.lyc.strategy.LoginStrategy;
+import com.lyc.strategy.context.LoginStrategyContext;
 import com.lyc.utils.SecurityUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -213,6 +213,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .webSite(userInfo.getWebSite())
                 .build();
         userMapper.updateById(user);
+    }
+
+    @Override
+    public String giteeLogin(CodeDTO codeDTO) {
+        String strategy = new LoginStrategyContext().executeLoginStrategy(codeDTO, LoginTypeEnum.GITEE);
+        return strategy;
     }
 
     /**
