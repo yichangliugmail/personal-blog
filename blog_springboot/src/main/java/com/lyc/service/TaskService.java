@@ -2,6 +2,7 @@ package com.lyc.service;
 
 import com.lyc.common.PageResult;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.TaskDTO;
 import com.lyc.model.po.Task;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lyc.model.vo.TaskBackVO;
@@ -26,4 +27,10 @@ public interface TaskService extends IService<Task> {
      * @param taskStatusVO vo
      */
     void changeStatus(TaskStatusVO taskStatusVO);
+
+    /**
+     * 修改定时任务数据
+     * @param taskDTO 新数据
+     */
+    void updateTask(TaskDTO taskDTO);
 }

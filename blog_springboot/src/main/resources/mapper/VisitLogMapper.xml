@@ -19,6 +19,12 @@
         ip_source,os,browser,
         create_time
     </sql>
+    <delete id="deleteVisitLog">
+        delete
+        from t_visit_log
+        where create_time &lt;= #{endTime}
+    </delete>
+
     <select id="selectUserViewList" resultType="com.lyc.model.vo.UserViewVO">
         select count(distinct ip_address)           as uv,
                count(create_time)                   as pv,

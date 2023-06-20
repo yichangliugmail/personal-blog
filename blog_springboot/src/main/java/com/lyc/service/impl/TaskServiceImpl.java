@@ -1,16 +1,25 @@
 package com.lyc.service.impl;
 
+import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lyc.common.PageResult;
+import com.lyc.handler.ServiceException;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.TaskDTO;
 import com.lyc.model.po.Task;
 import com.lyc.model.vo.TaskBackVO;
 import com.lyc.model.vo.TaskStatusVO;
+import com.lyc.quartz.utils.ScheduleUtils;
 import com.lyc.service.TaskService;
 import com.lyc.mapper.TaskMapper;
 import com.lyc.quartz.utils.CronUtils;
 import com.lyc.utils.PageUtils;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,6 +38,9 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements Ta
 
     @Resource
     private TaskMapper taskMapper;
+
+    @Autowired
+    private Scheduler scheduler;
 
     @Override
     public PageResult<TaskBackVO> getTaskBackVOList(ConditionDTO condition) {
@@ -65,6 +77,41 @@ public class TaskServiceImpl extends ServiceImpl<TaskMapper, Task> implements Ta
             taskMapper.updateStatusById(taskId,0);
         }
 
+    }
+
+    @Override
+    public void updateTask(TaskDTO taskDTO) {
+        //判断Cron表达式是否合法
+        Assert.isTrue(CronUtils.isValid(taskDTO.getCronExpression()),"Cron表达式无效！");
+
+        Task task = taskMapper.selectById(taskDTO.getId());
+        BeanUtils.copyProperties(taskDTO,task);
+        int count = taskMapper.updateById(task);
+        if(count>0){
+            try{
+                updateSchedulerJob(task,taskDTO.getTaskGroup());
+            }catch (SchedulerException e){
+                throw new ServiceException("更新定时任务失败");
+            }
+        }
+
+    }
+
+    /**
+     * 更新任务
+     *
+     * @param task      任务对象
+     * @param taskGroup 任务组名
+     */
+    public void updateSchedulerJob(Task task, String taskGroup) throws SchedulerException {
+        Integer taskId = task.getId();
+        // 判断是否存在
+        JobKey jobKey = ScheduleUtils.getJobKey(taskId, taskGroup);
+        if (scheduler.checkExists(jobKey)) {
+            // 防止创建时存在数据问题 先移除，然后在执行创建操作
+            scheduler.deleteJob(jobKey);
+        }
+        ScheduleUtils.createScheduleJob(scheduler, task);
     }
 }
 

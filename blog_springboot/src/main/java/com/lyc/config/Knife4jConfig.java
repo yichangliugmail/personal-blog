@@ -39,7 +39,7 @@ public class Knife4jConfig {
                 .title("博客API文档")
                 .description("基于SSM + Vue开发的博客项目")
                 .termsOfServiceUrl("https://localhost/api")
-                .contact(new Contact("琉奕昶", "https://github.com/", "11111@qq.com"))
+                .contact(new Contact("琉奕昶", "https://github.com/", "yichangliu@qq.com"))
                 .version("4.0")
                 .build();
     }

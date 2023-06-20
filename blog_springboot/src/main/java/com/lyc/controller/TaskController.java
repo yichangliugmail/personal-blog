@@ -5,6 +5,8 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.lyc.common.PageResult;
 import com.lyc.common.Result;
 import com.lyc.model.dto.ConditionDTO;
+import com.lyc.model.dto.TaskDTO;
+import com.lyc.model.po.Task;
 import com.lyc.model.vo.TaskBackVO;
 import com.lyc.model.vo.TaskStatusVO;
 import com.lyc.service.TaskService;
@@ -41,6 +43,14 @@ public class TaskController {
     @PutMapping("/admin/task/changeStatus")
     public Result<Object> changeStatus(@RequestBody TaskStatusVO taskStatusVO){
         taskService.changeStatus(taskStatusVO);
+        return Result.success(null);
+    }
+
+    @ApiOperation("修改定时任务")
+    @SaCheckPermission("monitor:task:update")
+    @PutMapping("/admin/task/update")
+    public Result<Object> updateTask(@RequestBody TaskDTO taskDTO){
+        taskService.updateTask(taskDTO);
         return Result.success(null);
     }
 }
