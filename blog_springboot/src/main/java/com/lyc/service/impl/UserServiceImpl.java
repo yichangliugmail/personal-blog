@@ -217,8 +217,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public String giteeLogin(CodeDTO codeDTO) {
-        String strategy = new LoginStrategyContext().executeLoginStrategy(codeDTO, LoginTypeEnum.GITEE);
-        return strategy;
+        String token = new LoginStrategyContext().executeLoginStrategy(codeDTO, LoginTypeEnum.GITEE);
+        return token;
     }
 
     /**

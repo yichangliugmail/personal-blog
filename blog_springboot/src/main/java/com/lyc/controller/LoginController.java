@@ -69,11 +69,11 @@ public class LoginController {
         return Result.success(null);
     }
 
-    @ApiOperation("gitee登录")
+    @ApiOperation("第三方 gitee 登录")
     @PostMapping("/oauth/gitee")
     public Result<String> giteeLogin(@RequestBody CodeDTO codeDTO){
 
-        String msg=userService.giteeLogin(codeDTO);
-        return Result.success(null);
+        String token=userService.giteeLogin(codeDTO);
+        return Result.success(token);
     }
 }
