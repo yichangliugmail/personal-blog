@@ -32,6 +32,8 @@
             <result property="loginList" column="login_list" jdbcType="VARCHAR"/>
             <result property="isMusic" column="is_music" jdbcType="TINYINT"/>
             <result property="musicId" column="music_id" jdbcType="VARCHAR"/>
+            <result property="isChat" column="is_chat" jdbcType="TINYINT"/>
+            <result property="websocketUrl" column="websocket_url" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -46,6 +48,7 @@
         message_check,is_reward,wei_xin_code,
         ali_code,email_notice,social_list,
         login_list,is_music,music_id,
+        is_chat,websocket_url,
         create_time,update_time
     </sql>
 </mapper>
