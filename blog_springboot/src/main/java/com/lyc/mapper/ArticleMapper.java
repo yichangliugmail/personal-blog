@@ -56,6 +56,9 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * 根据分类名查询分类id
      */
     Integer selectArticleCategoryId(@Param("categoryName") String categoryName);
+
+    List<ArticleSearchVO> selectByKeywords(@Param("keywords") String keywords);
+
 }
 
 

@@ -68,4 +68,9 @@ public interface ArticleService extends IService<Article> {
      * 文章推荐
      */
     void recommendArticle(RecommendDTO recommend);
+
+    /**
+     * 根据关键字查询文章
+     */
+    List<ArticleSearchVO> searchArticleVO(String keywords);
 }

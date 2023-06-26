@@ -123,4 +123,12 @@ public class ArticleController {
         articleService.recommendArticle(recommendDTO);
         return Result.success(null);
     }
+
+    @ApiOperation("文章查询")
+    @GetMapping("/article/search")
+    public Result<List<ArticleSearchVO>> recommendArticle(String keywords){
+        List<ArticleSearchVO> list = articleService.searchArticleVO(keywords);
+        return Result.success(list);
+    }
+
 }
