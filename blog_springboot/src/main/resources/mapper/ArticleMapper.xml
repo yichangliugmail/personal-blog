@@ -326,5 +326,22 @@
         WHERE
             category_name=#{categoryName}
     </select>
+    <select id="selectByKeywords" resultType="com.lyc.model.vo.ArticleSearchVO">
+        SELECT
+            id,
+            article_title,
+            article_content,
+            is_delete,
+            status
+        FROM
+            t_article
+        WHERE
+            status=1 AND is_delete=0
+        <if test="keywords!=null">
+            and (article_title like concat('%',#{keywords},'%')
+            or article_content like concat('%',#{keywords},'%'))
+        </if>
+
+    </select>
 
 </mapper>

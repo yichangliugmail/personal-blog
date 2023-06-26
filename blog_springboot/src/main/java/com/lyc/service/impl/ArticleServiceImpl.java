@@ -248,6 +248,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         articleMapper.updateById(article);
     }
 
+    @Override
+    public List<ArticleSearchVO> searchArticleVO(String keywords) {
+        /**
+         * 查询未被删除，可显示的文章
+         */
+        List<ArticleSearchVO> articleSearchVOS = articleMapper.selectByKeywords(keywords);
+        return articleSearchVOS;
+    }
+
     /**
      * 插入文章标签关系表
      * @param articleDTO 数据
