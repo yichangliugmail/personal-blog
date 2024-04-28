@@ -1,0 +1,21 @@
+server:
+  port: 8082
+
+logging:
+  config: classpath:logback.xml
+
+xxl:
+  job:
+    admin:
+      # xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+      addresses: http://127.0.0.1:8081/xxl-job-admin
+    accessToken: default_token
+    executor:
+      appname: lyc-job-blog
+      address: null
+      ip: null
+      port: 9999
+      # xxl-job executor log-path
+      logpath: /data/applogs/xxl-job/jobhandler
+      # xxl-job executor log-retention-days
+      logretentiondays: 30
