@@ -1,6 +1,6 @@
 package com.lyc.strategy.context;
 
-import com.lyc.enums.LikeTypeEnum;
+import com.lyc.constant.enums.LikeTypeEnum;
 import com.lyc.strategy.LikeStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

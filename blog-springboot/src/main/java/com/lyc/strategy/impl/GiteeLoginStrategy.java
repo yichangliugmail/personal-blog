@@ -7,7 +7,6 @@ import com.lyc.model.vo.GitUserInfoVO;
 import com.lyc.model.vo.SocialTokenVO;
 import com.lyc.model.vo.SocialUserInfoVO;
 import com.lyc.model.vo.TokenVO;
-import com.lyc.strategy.LoginStrategy;
 import com.lyc.strategy.abst.AbstractLoginStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -17,13 +16,12 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import static com.lyc.constant.SocialLoginConstant.*;
-import static com.lyc.enums.LoginTypeEnum.GITEE;
+import static com.lyc.constant.enums.LoginTypeEnum.GITEE;
 
 /**
  * gitee登录策略实现类

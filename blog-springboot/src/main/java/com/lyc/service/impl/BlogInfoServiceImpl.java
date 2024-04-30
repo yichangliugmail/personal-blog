@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 import static com.lyc.constant.CommonConstant.FALSE;
 import static com.lyc.constant.RedisConstant.*;
-import static com.lyc.enums.ArticleStatusEnum.PUBLIC;
+import static com.lyc.constant.enums.ArticleStatusEnum.PUBLIC;
 
 /**
  * @author 刘怡畅

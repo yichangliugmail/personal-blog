@@ -137,6 +137,12 @@ upload:
     secretKey: viOvIZr0zteOExAIJE2f4ITUK7wkWBlq
     #访问路径前缀
     url: https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    url: https://oos-all.oss-cn-shenzhen.aliyuncs.com/
+    accessKeyId:
+    accessKeySecret:
+    bucketName:
 
 # 线程池配置
 thread:

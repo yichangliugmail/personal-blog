@@ -1,7 +1,7 @@
 package com.lyc.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
-import com.lyc.annotation.AccessLimit;
+import com.lyc.config.annotation.AccessLimit;
 import com.lyc.common.Result;
 import com.lyc.model.dto.CodeDTO;
 import com.lyc.model.dto.LoginDTO;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.lyc.enums.StatusCodeEnum.SUCCESS;
+import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
 /**
  * @author LiuYiChang

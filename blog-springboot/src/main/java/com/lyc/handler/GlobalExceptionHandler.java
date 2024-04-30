@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Objects;
 
-import static com.lyc.enums.StatusCodeEnum.*;
+import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 
 /**

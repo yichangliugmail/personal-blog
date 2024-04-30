@@ -1,6 +1,6 @@
 package com.lyc.strategy.context;
 
-import com.lyc.enums.UploadModeEnum;
+import com.lyc.constant.enums.UploadModeEnum;
 import com.lyc.strategy.UploadStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

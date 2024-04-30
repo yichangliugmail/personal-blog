@@ -7,7 +7,7 @@ import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lyc.enums.LoginTypeEnum;
+import com.lyc.constant.enums.LoginTypeEnum;
 import com.lyc.mapper.MenuMapper;
 import com.lyc.mapper.RoleMapper;
 import com.lyc.mapper.UserRoleMapper;
@@ -19,7 +19,6 @@ import com.lyc.model.vo.*;
 import com.lyc.service.RedisService;
 import com.lyc.service.UserService;
 import com.lyc.mapper.UserMapper;
-import com.lyc.strategy.LoginStrategy;
 import com.lyc.strategy.context.LoginStrategyContext;
 import com.lyc.utils.SecurityUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -42,8 +41,8 @@ import static com.lyc.constant.CommonConstant.*;
 import static com.lyc.constant.ParamConstant.USER_NICKNAME;
 import static com.lyc.constant.RedisConstant.*;
 import static com.lyc.constant.MqConstant.*;
-import static com.lyc.enums.LoginTypeEnum.EMAIL;
-import static com.lyc.enums.RoleEnum.USER;
+import static com.lyc.constant.enums.LoginTypeEnum.EMAIL;
+import static com.lyc.constant.enums.RoleEnum.USER;
 
 /**
 * @author 蜡笔

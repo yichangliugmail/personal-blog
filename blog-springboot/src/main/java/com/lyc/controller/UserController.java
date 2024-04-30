@@ -2,23 +2,18 @@ package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.dev33.satoken.stp.StpUtil;
-import com.lyc.annotation.AccessLimit;
 import com.lyc.common.Result;
-import com.lyc.model.dto.LoginDTO;
-import com.lyc.model.dto.RegisterDTO;
 import com.lyc.model.dto.UserInfoDTO;
 import com.lyc.model.vo.*;
 import com.lyc.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.lyc.enums.StatusCodeEnum.SUCCESS;
+import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
 /**
  * @author 刘怡畅

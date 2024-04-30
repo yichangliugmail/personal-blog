@@ -3,9 +3,7 @@ package com.lyc.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lyc.constant.CommonConstant;
 import com.lyc.constant.ParamConstant;
 import com.lyc.handler.ServiceException;
 import com.lyc.mapper.*;
@@ -33,14 +31,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.lyc.constant.CommonConstant.FALSE;
 import static com.lyc.constant.RedisConstant.ARTICLE_LIKE_COUNT;
 import static com.lyc.constant.RedisConstant.ARTICLE_VIEW_COUNT;
 import static com.lyc.constant.CommonConstant.UPLOAD_FAIL;
-import static com.lyc.enums.ArticleStatusEnum.PUBLIC;
-import static com.lyc.enums.FilePathEnum.*;
+import static com.lyc.constant.enums.ArticleStatusEnum.PUBLIC;
+import static com.lyc.constant.enums.FilePathEnum.*;
 
 /**
 * @author 蜡笔

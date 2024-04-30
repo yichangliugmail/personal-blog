@@ -200,6 +200,12 @@
             <artifactId>cos_api</artifactId>
             <version>${cos_api.version}</version>
         </dependency>
+        <!-- OSS SDK 相关依赖 -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.4.2</version>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>

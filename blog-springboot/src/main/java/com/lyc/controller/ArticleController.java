@@ -2,10 +2,10 @@ package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import com.lyc.annotation.AccessLimit;
-import com.lyc.annotation.VisitLogger;
+import com.lyc.config.annotation.AccessLimit;
+import com.lyc.config.annotation.VisitLogger;
 import com.lyc.common.Result;
-import com.lyc.enums.LikeTypeEnum;
+import com.lyc.constant.enums.LikeTypeEnum;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.RecommendDTO;

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.lyc.enums.StatusCodeEnum.SUCCESS;
+import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
 /**
  * @author 刘怡畅

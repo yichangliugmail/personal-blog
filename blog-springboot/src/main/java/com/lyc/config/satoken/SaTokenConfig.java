@@ -1,6 +1,5 @@
 package com.lyc.config.satoken;
 
-import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.filter.SaServletFilter;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static com.lyc.enums.StatusCodeEnum.UNAUTHORIZED;
+import static com.lyc.constant.enums.StatusCodeEnum.UNAUTHORIZED;
 
 /**
  * SaToken配置，配置拦截器

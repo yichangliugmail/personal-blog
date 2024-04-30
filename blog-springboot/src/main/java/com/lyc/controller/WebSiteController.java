@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import static com.lyc.enums.StatusCodeEnum.SUCCESS;
+import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
 /**
  * @author 刘怡畅

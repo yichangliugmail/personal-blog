@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.lyc.enums.StatusCodeEnum.*;
+import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 /**
  * @author 刘怡畅

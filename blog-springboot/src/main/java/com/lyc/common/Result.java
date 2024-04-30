@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import static com.lyc.enums.StatusCodeEnum.*;
+import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 /**
  * @author 刘怡畅

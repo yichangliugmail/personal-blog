@@ -1,6 +1,6 @@
 package com.lyc.strategy.context;
 
-import com.lyc.enums.LoginTypeEnum;
+import com.lyc.constant.enums.LoginTypeEnum;
 import com.lyc.model.dto.CodeDTO;
 import com.lyc.strategy.LoginStrategy;
 import org.springframework.beans.factory.annotation.Autowired;

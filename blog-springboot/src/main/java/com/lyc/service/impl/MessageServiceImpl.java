@@ -22,11 +22,8 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
-
-import static com.lyc.enums.ZoneEnum.SHANGHAI;
 
 /**
 * @author 蜡笔

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-import static com.lyc.enums.ZoneEnum.SHANGHAI;
+import static com.lyc.constant.enums.ZoneEnum.SHANGHAI;
 
 
 /**

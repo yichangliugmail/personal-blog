@@ -1,7 +1,7 @@
 package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import com.lyc.annotation.VisitLogger;
+import com.lyc.config.annotation.VisitLogger;
 import com.lyc.common.PageResult;
 import com.lyc.common.Result;
 import com.lyc.model.dto.CategoryDTO;
@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

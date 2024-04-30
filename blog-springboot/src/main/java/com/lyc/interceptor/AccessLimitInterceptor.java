@@ -1,7 +1,7 @@
 package com.lyc.interceptor;
 
 import com.alibaba.fastjson2.JSON;
-import com.lyc.annotation.AccessLimit;
+import com.lyc.config.annotation.AccessLimit;
 import com.lyc.common.Result;
 import com.lyc.service.RedisService;
 import com.lyc.utils.IpUtils;

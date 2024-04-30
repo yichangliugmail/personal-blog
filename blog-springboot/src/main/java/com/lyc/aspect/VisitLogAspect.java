@@ -1,6 +1,6 @@
 package com.lyc.aspect;
 
-import com.lyc.annotation.VisitLogger;
+import com.lyc.config.annotation.VisitLogger;
 import com.lyc.manager.AsyncManager;
 import com.lyc.manager.factory.AsyncFactory;
 import com.lyc.model.po.VisitLog;
@@ -34,7 +34,7 @@ public class VisitLogAspect {
     /**
      * 设置切入点
      */
-    @Pointcut("@annotation(com.lyc.annotation.VisitLogger)")
+    @Pointcut("@annotation(com.lyc.config.annotation.VisitLogger)")
     public void visitLogPointcut(){}
 
     /**

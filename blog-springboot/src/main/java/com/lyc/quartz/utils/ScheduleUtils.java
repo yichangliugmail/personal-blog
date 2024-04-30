@@ -2,7 +2,7 @@ package com.lyc.quartz.utils;
 
 import com.lyc.constant.ScheduleConstant;
 import com.lyc.model.po.Task;
-import com.lyc.enums.TaskStatusEnum;
+import com.lyc.constant.enums.TaskStatusEnum;
 import com.lyc.handler.ServiceException;
 import com.lyc.quartz.execution.QuartzDisallowConcurrentExecution;
 import com.lyc.quartz.execution.QuartzJobExecution;

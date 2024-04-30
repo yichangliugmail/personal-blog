@@ -16,12 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 import java.util.Objects;
 
 import static com.lyc.constant.CommonConstant.UPLOAD_FAIL;
 import static com.lyc.constant.RedisConstant.SITE_SETTING;
-import static com.lyc.enums.FilePathEnum.CONFIG;
+import static com.lyc.constant.enums.FilePathEnum.CONFIG;
 
 /**
 * @author 蜡笔

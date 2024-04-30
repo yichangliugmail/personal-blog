@@ -21,7 +21,7 @@ import java.time.ZoneId;
 import java.util.Map;
 
 import static com.lyc.constant.CommonConstant.ONLINE_USER;
-import static com.lyc.enums.ZoneEnum.SHANGHAI;
+import static com.lyc.constant.enums.ZoneEnum.SHANGHAI;
 
 /**
  * 自定义 SaToken 监听器的实现

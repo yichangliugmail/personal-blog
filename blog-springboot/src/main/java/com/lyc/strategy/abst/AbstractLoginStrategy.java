@@ -14,7 +14,7 @@ import com.lyc.strategy.LoginStrategy;
 import javax.annotation.Resource;
 import java.util.Objects;
 
-import static com.lyc.enums.RoleEnum.USER;
+import static com.lyc.constant.enums.RoleEnum.USER;
 
 /**
  * 抽象登录模板类
