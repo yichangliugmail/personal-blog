@@ -16,7 +16,7 @@
     <artifactId>blog-springboot</artifactId>
     <version>4.0</version>
     <name>blog_4</name>
-    <description>第二代博客</description>
+    <description>新一代博客</description>
     <packaging>jar</packaging>
 
     <properties>
@@ -211,17 +211,34 @@
             <artifactId>annotations</artifactId>
             <version>24.0.1</version>
         </dependency>
-        <!-- 注册中心 spring cloud consul-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-            <version>3.1.0</version>
-        </dependency>
         <!-- spring-test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <!-- zxing -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <!-- websocket -->
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.3.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

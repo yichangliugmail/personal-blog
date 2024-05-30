@@ -1,12 +1,14 @@
 package com.lyc.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.google.zxing.WriterException;
 import com.lyc.config.annotation.AccessLimit;
 import com.lyc.common.Result;
 import com.lyc.model.dto.CodeDTO;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.RegisterDTO;
 import com.lyc.service.UserService;
+import com.lyc.utils.QrCodeUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
 
 import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
@@ -72,8 +76,16 @@ public class LoginController {
     @ApiOperation("第三方 gitee 登录")
     @PostMapping("/oauth/gitee")
     public Result<String> giteeLogin(@RequestBody CodeDTO codeDTO){
-
         String token=userService.giteeLogin(codeDTO);
         return Result.success(token);
     }
+
+    @ApiOperation("获取二维码图像")
+    @GetMapping("/getQrCode")
+    public void getQrCode(HttpServletResponse response,String token) throws Exception {
+        //传入token作为二维码内容
+        QrCodeUtil.encode(response,token);
+    }
+
+
 }
