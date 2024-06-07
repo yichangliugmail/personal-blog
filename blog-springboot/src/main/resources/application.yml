@@ -52,8 +52,8 @@ spring:
   rabbitmq:
     host: 120.78.166.194
     port: 5672
-    username: admin
-    password: mimashishenme
+    username: guest
+    password: guest
     listener:
       simple:
         retry:
@@ -78,7 +78,7 @@ sa-token:
   # token前缀
   token-prefix: Bearer
   # token有效期，单位s 默认30天, -1代表永不过期
-  timeout: -1
+  timeout: 300
   # token临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
   activity-timeout: -1
   # 关闭自动续签
@@ -147,20 +147,20 @@ thread:
     keep-alive-seconds: 60
 
 llm:
-  # 讯飞星火大模型
+  # 讯飞星火大模型,https://www.xfyun.cn/doc/spark/Web.html
   xfxh:
-    # 服务引擎使用 讯飞星火认知大模型V2.0，如果使用 V1.5 需要将 hostUrl 修改为 https://spark-api.xf-yun.com/v1.1/chat
-    hostUrl: https://spark-api.xf-yun.com/v2.1/chat
+    # 服务引擎使用 讯飞星火认知大模型V3.596
+    hostUrl: https://spark-api.xf-yun.com/v3.5/chat
     # 发送请求时指定的访问领域，如果是 V1.5版本 设置为 general，如果是 V2版本 设置为 generalv2
-    domain: generalv2
+    domain: generalv3.5
     # 核采样阈值。用于决定结果随机性，取值越高随机性越强即相同的问题得到的不同答案的可能性越高。取值 [0,1]
     temperature: 0.5
     # 模型回答的tokens的最大长度，V1.5取值为[1,4096]，V2.0取值为[1,8192]。
-    maxTokens: 2048
+    maxTokens: 4096
     # 大模型回复问题的最大响应时长，单位 s
-    maxResponseTime: 10
+    maxResponseTime: 30
     # 允许同时连接大模型的 websocket 数，如果是普通（免费）用户为 2，超过这个数连接响应会报错，具体参考官网。
     QPS: 2
     appId: a95b45a4
-    apiKey: YWI2MGQ5NzMxYzM2ZWVjY2MwYzYzNzI1
-    apiSecret: affcf867b04e88b3cb0ae57ea2f4ed30
+    apiKey: affcf867b04e88b3cb0ae57ea2f4ed30
+    apiSecret: YWI2MGQ5NzMxYzM2ZWVjY2MwYzYzNzI1
