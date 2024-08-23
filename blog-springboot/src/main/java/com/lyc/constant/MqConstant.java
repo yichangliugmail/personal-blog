@@ -3,7 +3,7 @@ package com.lyc.constant;
 /**
  * 消息中间件常量
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 public class MqConstant {
     /**

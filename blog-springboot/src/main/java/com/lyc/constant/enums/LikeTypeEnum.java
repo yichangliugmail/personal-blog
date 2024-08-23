@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 点赞类型枚举类
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 
 @Getter

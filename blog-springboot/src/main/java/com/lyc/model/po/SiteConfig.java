@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 网站配置
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 public class SiteConfig {

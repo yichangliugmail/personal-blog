@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.Objects;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 文件md5工具类
  * @date 2023/4/30 10:19
  */

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import static com.lyc.constant.MqConstant.*;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description rebbitMQ配置类
  * @date 2023/5/5 17:17
  */

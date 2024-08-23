@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /**
  * 文章搜索VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @Builder

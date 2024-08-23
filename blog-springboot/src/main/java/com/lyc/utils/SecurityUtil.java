@@ -11,7 +11,7 @@ import java.security.Security;
 import java.util.Arrays;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 加密工具类
  * @date 2023/4/24 21:26
  */

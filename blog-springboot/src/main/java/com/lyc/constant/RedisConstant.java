@@ -3,7 +3,7 @@ package com.lyc.constant;
 /**
  * Redis常量
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 public class RedisConstant {
 

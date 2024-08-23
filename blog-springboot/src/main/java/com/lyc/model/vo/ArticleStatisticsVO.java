@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 文章贡献统计
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "文章贡献统计")

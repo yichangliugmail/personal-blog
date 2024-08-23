@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 /**
  * 分类后台VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2022/12/03 21:43
  **/
 @Data

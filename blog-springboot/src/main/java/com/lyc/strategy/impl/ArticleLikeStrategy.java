@@ -10,7 +10,7 @@ import static com.lyc.constant.RedisConstant.ARTICLE_LIKE_COUNT;
 import static com.lyc.constant.RedisConstant.USER_ARTICLE_LIKE;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 文章点赞策略实现类
  * @date 2023/5/23 17:59
  */

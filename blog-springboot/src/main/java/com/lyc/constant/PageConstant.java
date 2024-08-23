@@ -3,7 +3,7 @@ package com.lyc.constant;
 /**
  * 分页常量
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 public class PageConstant {
 

@@ -21,7 +21,7 @@ import java.io.InputStream;
 /**
  * cos上传策略，继承上传策略抽象模板类
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Slf4j
 @Service("cosUploadStrategyImpl")

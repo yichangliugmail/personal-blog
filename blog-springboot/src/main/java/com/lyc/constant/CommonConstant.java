@@ -1,7 +1,7 @@
 package com.lyc.constant;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 公共常量
  * @date 2023/4/25 15:11
  */

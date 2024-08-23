@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 开源链接控制器
  * @date 2023/5/9 16:57
  */

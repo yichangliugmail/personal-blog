@@ -3,7 +3,7 @@ package com.lyc.config.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description
  * @date 2023/5/3 20:46
  */

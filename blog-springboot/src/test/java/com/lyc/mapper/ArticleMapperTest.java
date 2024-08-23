@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description mapper层测试
  * @date 2023/4/27 17:50
  */

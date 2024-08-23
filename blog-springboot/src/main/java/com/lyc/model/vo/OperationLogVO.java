@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 /**
  * 操作日志VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "操作日志VO")

@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * 其他信息
  *
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2022/12/11 19:35
  **/
 @Data

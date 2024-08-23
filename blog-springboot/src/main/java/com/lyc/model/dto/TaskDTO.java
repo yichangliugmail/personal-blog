@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * 定时任务DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @NoArgsConstructor

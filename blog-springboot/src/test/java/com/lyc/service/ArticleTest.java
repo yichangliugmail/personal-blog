@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 测试文章服务层
  * @date 2023/5/2 15:27
  */

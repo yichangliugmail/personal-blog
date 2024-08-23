@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description
  * @date 2023/4/30 15:27
  */

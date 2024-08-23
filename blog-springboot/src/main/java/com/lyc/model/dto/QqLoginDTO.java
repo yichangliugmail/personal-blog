@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * QQ登录DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2023/04/06 23:30
  **/
 @Data

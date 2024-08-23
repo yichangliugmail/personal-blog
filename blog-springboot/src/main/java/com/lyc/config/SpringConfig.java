@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description Spring配置类
  * @date 2023/5/2 9:54
  */

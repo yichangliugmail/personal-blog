@@ -1,7 +1,7 @@
 package com.lyc.model.vo;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2023/02/07 11:29
  **/
 
@@ -12,7 +12,7 @@ import lombok.Data;
 /**
  * 回复数VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "回复数VO")

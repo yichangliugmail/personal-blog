@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 import static com.lyc.constant.CommonConstant.LOG_OVERTIME;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 线程工具类
  * @date 2023/5/2 10:19
  */

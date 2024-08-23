@@ -12,7 +12,7 @@ import java.io.InputStream;
 /**
  * 抽象的上传模板类
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Service
 public abstract class AbstractUploadStrategy implements UploadStrategy {

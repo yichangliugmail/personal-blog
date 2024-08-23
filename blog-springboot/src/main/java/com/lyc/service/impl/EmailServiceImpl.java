@@ -15,7 +15,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description
  * @date 2023/5/5 19:18
  */

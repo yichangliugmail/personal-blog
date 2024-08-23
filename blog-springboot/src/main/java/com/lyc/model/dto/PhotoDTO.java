@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 照片DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  **/
 @Data
 @ApiModel(description = "照片DTO")

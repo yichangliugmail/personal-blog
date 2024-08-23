@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 点赞策略上下文
  * @date 2023/5/23 17:45
  */

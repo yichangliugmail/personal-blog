@@ -30,7 +30,7 @@ import static com.lyc.constant.RedisConstant.*;
 import static com.lyc.constant.enums.ArticleStatusEnum.PUBLIC;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 博客基本信息实现类
  * @date 2023/4/25 17:53
  */

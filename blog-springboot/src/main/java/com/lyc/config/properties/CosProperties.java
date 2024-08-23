@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 自定义腾讯云 COS 属性配置
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @Configuration

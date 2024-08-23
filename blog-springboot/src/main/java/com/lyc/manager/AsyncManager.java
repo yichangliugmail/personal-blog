@@ -8,7 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 异步任务管理器，用于管理线程池和异步任务
  * @date 2023/5/2 9:45
  */

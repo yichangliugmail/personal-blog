@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * 评论DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel("评论DTO")

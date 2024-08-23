@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 评论数量VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  **/
 @Data
 @ApiModel(description = "评论数量VO")

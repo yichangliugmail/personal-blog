@@ -3,7 +3,7 @@ package com.lyc.constant;
 /**
  * 表的默认参数
  *
- * @author 刘怡畅
+ * @author liuYichang
  *
  */
 public class ParamConstant {

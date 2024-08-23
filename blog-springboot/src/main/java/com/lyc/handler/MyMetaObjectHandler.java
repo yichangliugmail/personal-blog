@@ -14,7 +14,7 @@ import static com.lyc.constant.enums.ZoneEnum.SHANGHAI;
 /**
  * mybatis plus自动填充
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Log4j2
 @Component

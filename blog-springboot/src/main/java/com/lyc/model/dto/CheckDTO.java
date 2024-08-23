@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 审核DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "审核DTO")

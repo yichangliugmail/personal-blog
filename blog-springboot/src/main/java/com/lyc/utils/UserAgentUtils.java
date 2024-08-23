@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 浏览器和操作系统解析工具类
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 
 public class UserAgentUtils {

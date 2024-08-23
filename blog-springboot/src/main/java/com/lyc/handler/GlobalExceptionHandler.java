@@ -16,7 +16,7 @@ import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 基于SpringAOP捕获异常
  * @date 2023/4/24 22:55
  */

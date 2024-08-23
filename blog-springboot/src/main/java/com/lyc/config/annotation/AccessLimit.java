@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  * 操作限流注解
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Documented     //注解是否包含在javaDoc
 @Target(ElementType.METHOD)     //作用目标

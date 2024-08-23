@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 搜索模式枚举
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Getter
 @AllArgsConstructor

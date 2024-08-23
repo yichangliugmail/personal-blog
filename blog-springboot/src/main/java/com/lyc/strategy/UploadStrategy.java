@@ -3,7 +3,7 @@ package com.lyc.strategy;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 上传策略
  * @date 2023/4/30 10:36
  */

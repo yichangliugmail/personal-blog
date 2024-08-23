@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 异常日志
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 public class ExceptionLog {

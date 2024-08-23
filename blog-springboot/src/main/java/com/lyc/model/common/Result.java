@@ -7,7 +7,7 @@ import lombok.Data;
 import static com.lyc.constant.enums.StatusCodeEnum.*;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 通用返回结果类
  * @date 2023/10/28 20:46
  */

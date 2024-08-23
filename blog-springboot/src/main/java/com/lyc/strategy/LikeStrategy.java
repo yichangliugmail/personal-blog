@@ -1,7 +1,7 @@
 package com.lyc.strategy;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 点赞策略
  * @date 2023/5/23 17:42
  */

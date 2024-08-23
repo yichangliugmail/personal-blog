@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.TimerTask;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 基于AOP实现用户访问日志记录
  * @date 2023/5/16 16:40
  */

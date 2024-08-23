@@ -26,7 +26,7 @@ import static com.lyc.constant.enums.ZoneEnum.SHANGHAI;
 /**
  * 自定义 SaToken 监听器的实现
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Component
 public class MySaTokenListener implements SaTokenListener {

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 逻辑删除
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "逻辑删除")

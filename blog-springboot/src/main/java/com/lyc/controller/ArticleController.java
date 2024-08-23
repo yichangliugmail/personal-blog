@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 博客文章控制器
  * @date 2023/4/27 16:49
  */

@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 /**
  * 前端返回工具
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 public class WebUtils {
 

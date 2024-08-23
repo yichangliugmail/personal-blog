@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 查询条件
  *
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2022/12/04 21:59
  **/
 @Data

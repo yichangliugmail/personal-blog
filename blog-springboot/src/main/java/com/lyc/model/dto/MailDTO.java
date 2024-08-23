@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 邮箱DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @Builder

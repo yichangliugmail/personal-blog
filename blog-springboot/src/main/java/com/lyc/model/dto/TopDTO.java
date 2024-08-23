@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 置顶DTO
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @ApiModel(description = "置顶DTO")

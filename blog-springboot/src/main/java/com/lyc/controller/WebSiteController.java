@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import static com.lyc.constant.enums.StatusCodeEnum.SUCCESS;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description
  * @date 2023/4/30 9:32
  */

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 /**
  * 聊天记录
  *
- * @author 刘怡畅
+ * @author liuYichang
  **/
 @Data
 @Builder

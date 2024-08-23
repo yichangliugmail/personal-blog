@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.TimerTask;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 基于AOP实现异常日志捕获
  * @date 2023/4/30 16:39
  */

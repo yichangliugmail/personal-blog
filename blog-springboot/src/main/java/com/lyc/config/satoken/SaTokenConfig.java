@@ -23,7 +23,7 @@ import static com.lyc.constant.enums.StatusCodeEnum.UNAUTHORIZED;
 /**
  * SaToken配置，配置拦截器
  *
- * @author 刘怡畅
+ * @author liuYichang
  * @date 2022/11/28 22:12
  **/
 @Component

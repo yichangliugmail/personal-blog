@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 照片VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  **/
 @Data
 @ApiModel(description = "照片VO")

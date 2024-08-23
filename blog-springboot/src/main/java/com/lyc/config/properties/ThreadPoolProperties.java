@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 自定义配置属性，线程池
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Data
 @Configuration

@@ -9,7 +9,7 @@ import com.lyc.service.VisitLogService;
 import java.util.TimerTask;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 异步任务工厂
  * @date 2023/5/2 10:48
  */

@@ -10,7 +10,7 @@ import java.io.*;
 /**
  * 本地上传策略
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 @Service("localUploadStrategyImpl")
 public class LocalUploadStrategy extends AbstractUploadStrategy {

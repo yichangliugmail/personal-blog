@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 友链VO
  *
- * @author 刘怡畅
+ * @author liuYichang
  **/
 @Data
 @ApiModel(description = "友链VO")

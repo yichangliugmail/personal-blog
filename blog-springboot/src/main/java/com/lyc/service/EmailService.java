@@ -3,7 +3,7 @@ package com.lyc.service;
 import com.lyc.model.dto.MailDTO;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 邮件服务接口
  * @date 2023/5/5 19:15
  */

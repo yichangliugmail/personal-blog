@@ -15,7 +15,7 @@ import static com.lyc.constant.PageConstant.*;
 /**
  * 分页拦截器
  *
- * @author 刘怡畅
+ * @author liuYichang
  */
 public class PageableInterceptor implements HandlerInterceptor {
 

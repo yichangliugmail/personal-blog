@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 刘怡畅
+ * @author liuYichang
  * @description 相册控制器
  * @date 2023/5/25 15:53
  */
