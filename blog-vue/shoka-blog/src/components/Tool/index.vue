@@ -14,15 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import useStore from "@/store";
+import { useAppStore } from "@/store";
 import { useEventListener, useScroll } from "@vueuse/core";
+const app = useAppStore();
 const route = useRoute();
 const process = ref(0);
 const show = reactive({
   transform: "translateX(-45px)"
 });
 const { y } = useScroll(window);
-const { app } = useStore();
 const commentList = ["article", "friend", "talkInfo"];
 const commentShow = computed(() => (value: string) => commentList.includes(value));
 
@@ -60,7 +60,7 @@ const handleBackToTop = () => {
 .tool {
   position: fixed;
   right: -40px;
-  bottom: 1rem;
+  bottom: 85px;
   z-index: 9;
   color: var(--primary-color);
   box-shadow: 0 0 0.5rem rgb(0 0 0 / 10%);

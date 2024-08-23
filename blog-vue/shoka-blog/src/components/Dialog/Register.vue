@@ -23,10 +23,11 @@
 import { getCode, login, register } from "@/api/login";
 import { LoginForm } from "@/api/login/types";
 import { UserForm } from "@/model";
-import useStore from "@/store";
+import { useAppStore, useUserStore } from "@/store";
 import { setToken } from "@/utils/token";
 import { useIntervalFn } from '@vueuse/core';
-const { app, user } = useStore();
+const app = useAppStore();
+const user = useUserStore();
 const registerRef = ref();
 const data = reactive({
   timer: 0,
@@ -67,8 +68,8 @@ const sendCode = () => {
   });
 };
 const handleRegister = () => {
-  if (registerForm.value.code.trim().length != 5) {
-    window.$message?.warning("请输入5位验证码");
+  if (registerForm.value.code.trim().length != 6) {
+    window.$message?.warning("请输入6位验证码");
     return;
   }
   if (registerForm.value.password.trim().length < 6) {

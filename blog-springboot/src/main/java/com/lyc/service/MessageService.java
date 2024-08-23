@@ -1,11 +1,10 @@
 package com.lyc.service;
 
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.MessageDTO;
 import com.lyc.model.po.Message;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lyc.model.vo.MessageBackVO;
 import com.lyc.model.vo.MessageVO;
 
 import java.util.List;

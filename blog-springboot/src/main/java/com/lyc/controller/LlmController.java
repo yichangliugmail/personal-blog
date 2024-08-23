@@ -1,13 +1,14 @@
 package com.lyc.controller;
 
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.service.LlmService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
  * @author 大模型控制器
@@ -31,4 +32,17 @@ public class LlmController {
     public Result<String> sendQuestion(String question) throws Exception {
         return llmService.sendQuestionXfxh(question);
     }
+
+
+    @GetMapping("/xfxh/createConnect")
+    public SseEmitter createConnect(Long clientId) {
+        return llmService.createConnect(clientId);
+    }
+
+    @PostMapping("/xfxh/chatStream")
+    public void streamOutputToPage(Long clientId,String question){
+        llmService.chatStream(clientId,question);
+    }
+
+
 }

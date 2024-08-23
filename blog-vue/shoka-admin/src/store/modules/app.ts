@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { AppState } from "../interface";
+import { createPinia } from 'pinia'
+
 
 const useAppStore = defineStore("useAppStore", {
   state: (): AppState => ({
@@ -28,3 +30,4 @@ const useAppStore = defineStore("useAppStore", {
 });
 
 export default useAppStore;
+export const store = createPinia()

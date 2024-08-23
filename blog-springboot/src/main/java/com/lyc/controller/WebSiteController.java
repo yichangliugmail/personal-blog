@@ -1,7 +1,7 @@
 package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.model.po.SiteConfig;
 import com.lyc.service.SiteConfigService;
 import io.swagger.annotations.Api;

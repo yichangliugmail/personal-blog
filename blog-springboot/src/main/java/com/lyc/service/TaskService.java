@@ -1,6 +1,6 @@
 package com.lyc.service;
 
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.TaskDTO;
 import com.lyc.model.po.Task;

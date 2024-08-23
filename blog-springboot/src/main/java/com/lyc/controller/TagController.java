@@ -1,7 +1,6 @@
 package com.lyc.controller;
 
-import com.lyc.common.Result;
-import com.lyc.model.po.Tag;
+import com.lyc.model.common.Result;
 import com.lyc.model.vo.TagOptionVO;
 import com.lyc.service.TagService;
 import io.swagger.annotations.Api;

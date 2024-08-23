@@ -4,14 +4,14 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.lyc.config.annotation.AccessLimit;
 import com.lyc.config.annotation.VisitLogger;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.constant.enums.LikeTypeEnum;
 import com.lyc.model.dto.ArticleDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.dto.RecommendDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.vo.*;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.service.ArticleService;
 import com.lyc.strategy.context.LikeStrategyContext;
 import io.swagger.annotations.Api;
@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-
-
 
 /**
  * @author 刘怡畅

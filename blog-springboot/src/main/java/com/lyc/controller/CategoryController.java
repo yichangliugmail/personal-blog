@@ -2,8 +2,8 @@ package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.lyc.config.annotation.VisitLogger;
-import com.lyc.common.PageResult;
-import com.lyc.common.Result;
+import com.lyc.model.common.PageResult;
+import com.lyc.model.common.Result;
 import com.lyc.model.dto.CategoryDTO;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.vo.ArticleConditionList;

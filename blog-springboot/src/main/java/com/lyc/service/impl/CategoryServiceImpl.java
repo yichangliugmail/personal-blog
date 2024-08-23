@@ -3,7 +3,7 @@ package com.lyc.service.impl;
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.mapper.ArticleMapper;
 import com.lyc.model.dto.CategoryDTO;
 import com.lyc.model.dto.ConditionDTO;

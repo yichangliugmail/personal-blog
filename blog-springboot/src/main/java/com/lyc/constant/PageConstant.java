@@ -22,4 +22,15 @@ public class PageConstant {
      */
     public static final String DEFAULT_SIZE = "10";
 
+    /**
+     * 默认当前页
+     */
+    public static final Integer DEFAULT_CURRENT = 1;
+
+    /**
+     * 默认当前页
+     */
+    public static final Integer MY_SIZE = 10;
+
+
 }

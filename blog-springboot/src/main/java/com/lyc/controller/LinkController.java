@@ -1,6 +1,6 @@
 package com.lyc.controller;
 
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.model.po.Friend;
 import com.lyc.service.FriendService;
 import io.swagger.annotations.Api;

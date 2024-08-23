@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <h1 class="page-title">开源链接</h1>
+    <h1 class="page-title">友情链接</h1>
     <img class="page-cover" src="https://static.ttkwsd.top/config/c8049b9b880411ebb6edd017c2d2eca2.jpg" alt="" />
     <!-- 波浪 -->
     <Waves></Waves>
@@ -20,9 +20,9 @@
         <svg-icon class="flower" icon-class="flower" size="1.25rem" color="pink"></svg-icon>
         申请方法
       </h2>
-      <div class="welcome">分享好的开源项目可以在本页留言 (｡･∀･)ﾉﾞ</div>
+      <div class="welcome">需要交换友链的可在本页留言 (｡･∀･)ﾉﾞ</div>
       <blockquote class="block">
-        <p>出于信息需要，你的信息要包含：网站名称、项目链接、项目介绍、封面链接（可选）</p>
+        <p>出于信息需要,大佬你的信息格式要包含：网站名称、网站链接、头像链接、网站介绍、名称颜色</p>
       </blockquote>
       <h2>
         <svg-icon class="flower" icon-class="flower" size="1.25rem" color="pink"></svg-icon>
@@ -49,8 +49,8 @@
 <script setup lang="ts">
 import { getFriendList } from "@/api/friend";
 import { Friend } from "@/api/friend/types";
-import useStore from "@/store";
-const { blog } = useStore();
+import { useBlogStore } from "@/store";
+const blog = useBlogStore();
 const commentType = ref(2);
 const friendList = ref<Friend[]>([]);
 onMounted(() => {

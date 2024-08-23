@@ -1,7 +1,7 @@
 package com.lyc.controller;
 
-import com.lyc.common.PageResult;
-import com.lyc.common.Result;
+import com.lyc.model.common.PageResult;
+import com.lyc.model.common.Result;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.vo.AlbumBackVO;
 import com.lyc.service.AlbumService;

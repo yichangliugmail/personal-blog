@@ -7,7 +7,7 @@ import com.lyc.model.dto.TopDTO;
 import com.lyc.model.po.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lyc.model.vo.*;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

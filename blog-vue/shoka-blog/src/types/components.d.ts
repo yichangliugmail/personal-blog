@@ -7,9 +7,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Aplayer: typeof import('./../components/MusicPlayer/aplayer.vue')['default']
     Author: typeof import('./../components/Layout/SideBar/Author.vue')['default']
     BlogInfo: typeof import('./../components/Layout/SideBar/BlogInfo.vue')['default']
     Catalog: typeof import('./../components/Catalog/index.vue')['default']
+    ChatRoom: typeof import('./../components/ChatRoom/index.vue')['default']
     CommentList: typeof import('./../components/Comment/CommentList.vue')['default']
     Drawer: typeof import('./../components/Layout/Drawer/index.vue')['default']
     Echarts: typeof import('./../components/Echarts/index.vue')['default']

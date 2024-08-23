@@ -11,7 +11,7 @@ import cn.dev33.satoken.util.SaResult;
 import cn.hutool.json.JSONUtil;
 import com.lyc.interceptor.AccessLimitInterceptor;
 import com.lyc.interceptor.PageableInterceptor;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

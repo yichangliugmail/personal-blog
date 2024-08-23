@@ -45,8 +45,10 @@
 </template>
 
 <script setup lang="ts">
-import useStore from "@/store";
-const { user, app, blog } = useStore();
+import { useAppStore, useBlogStore, useUserStore } from "@/store";
+const user = useUserStore();
+const app = useAppStore();
+const blog = useBlogStore();
 const router = useRouter();
 const route = useRoute();
 const menuList = [
@@ -59,11 +61,11 @@ const menuList = [
     name: "文章",
     icon: "article",
     children: [
-      // {
-      //   name: "归档",
-      //   icon: "archives",
-      //   path: "/archive"
-      // },
+      {
+        name: "归档",
+        icon: "archives",
+        path: "/archive"
+      },
       {
         name: "分类",
         icon: "category",
@@ -76,24 +78,29 @@ const menuList = [
       },
     ]
   },
-  // {
-  //   name: "娱乐",
-  //   icon: "fun",
-  //   children: [
-  //     {
-  //       name: "说说",
-  //       icon: "talk",
-  //       path: "/talk"
-  //     },
-  //     {
-  //       name: "相册",
-  //       icon: "album",
-  //       path: "/album"
-  //     },
-  //   ]
-  // },
   {
-    name: "链接",
+    name: "娱乐",
+    icon: "fun",
+    children: [
+      {
+        name: "说说",
+        icon: "talk",
+        path: "/talk"
+      },
+      {
+        name: "相册",
+        icon: "album",
+        path: "/album"
+      },
+      {
+        name: "图床",
+        icon: "upload",
+        path: "/picture"
+      },
+    ]
+  },
+  {
+    name: "友链",
     icon: "friend",
     path: "/friend"
   },

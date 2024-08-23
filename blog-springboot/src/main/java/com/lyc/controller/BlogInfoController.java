@@ -1,6 +1,6 @@
 package com.lyc.controller;
 
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.model.vo.BlogBackInfoVO;
 import com.lyc.model.vo.BlogInfoVO;
 import com.lyc.service.BlogInfoService;

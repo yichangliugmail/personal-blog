@@ -13,7 +13,7 @@ import com.lyc.model.dto.RecommendDTO;
 import com.lyc.model.dto.TopDTO;
 import com.lyc.model.po.*;
 import com.lyc.model.vo.*;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.service.ArticleService;
 import com.lyc.service.RedisService;
 import com.lyc.strategy.context.UploadStrategyContext;

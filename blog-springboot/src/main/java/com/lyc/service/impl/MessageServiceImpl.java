@@ -3,7 +3,7 @@ package com.lyc.service.impl;
 import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.constant.ParamConstant;
 import com.lyc.handler.ServiceException;
 import com.lyc.model.dto.ConditionDTO;

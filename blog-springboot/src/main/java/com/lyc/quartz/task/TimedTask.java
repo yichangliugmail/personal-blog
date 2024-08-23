@@ -47,4 +47,6 @@ public class TimedTask {
         DateTime endTime = DateUtil.beginOfDay(DateUtil.offsetDay(new Date(), -7));
         visitLogMapper.deleteVisitLog(endTime);
     }
+
+
 }

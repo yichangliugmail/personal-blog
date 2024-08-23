@@ -1,9 +1,9 @@
 package com.lyc.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
-import com.google.zxing.WriterException;
 import com.lyc.config.annotation.AccessLimit;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.model.dto.CodeDTO;
 import com.lyc.model.dto.LoginDTO;
 import com.lyc.model.dto.RegisterDTO;
@@ -50,7 +50,7 @@ public class LoginController {
      * SaCheckLogin 鉴权，只有登录用户才能操作,但是token失效后，就会找不到token报错
      * @return rr
      */
-//    @SaCheckLogin
+    @SaCheckLogin
     @ApiOperation(value = "用户退出")
     @GetMapping("/logout")
     public Result<?> logout() {

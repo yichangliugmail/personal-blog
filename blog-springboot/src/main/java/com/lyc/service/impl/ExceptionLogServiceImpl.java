@@ -2,7 +2,7 @@ package com.lyc.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lyc.common.PageResult;
+import com.lyc.model.common.PageResult;
 import com.lyc.model.dto.ConditionDTO;
 import com.lyc.model.po.ExceptionLog;
 import com.lyc.service.ExceptionLogService;

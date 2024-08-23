@@ -1,8 +1,8 @@
 <template>
   <div class="imgs">
     <ul>
-      <li class="item" v-for="(image, index) in imageList" :key="index" :style="{
-        'background-image': 'url(' + image + ')'
+      <li class="item" v-for="carousel of carouselList" :key="carousel.id" :style="{
+        'background-image': 'url(' + carousel.imgUrl + ')'
       }">
       </li>
     </ul>
@@ -10,15 +10,14 @@
 </template>
 
 <script setup lang="ts">
-
-const imageList = [
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/379ce4b2ddf4b087441c196fbffa2f3b.jpg",
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/fcb7cad9dcec4f1ba21781ffd482dd7a.jpg",
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/6becdfb5062ec2e1f9b9b16dd4b65d7e.jpg",
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/2ce1129fceee7f14cb4cf554ed167534.jpg",
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/84aae58f4246f8419cf018d7d7f6bae8.jpg",
-  "https://bucket481282474-1316299604.cos.ap-guangzhou.myqcloud.com/article/5b43ce3015351615d3654b8cac53c525.jpg"
-]
+import { getCarouselList } from "@/api/carousel";
+import { Carousel } from "@/api/carousel/types";
+const carouselList = ref<Carousel[]>([]);
+onMounted(() => {
+  getCarouselList().then(({ data }) => {
+    carouselList.value = data.data;
+  })
+});
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +28,7 @@ const imageList = [
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   z-index: -9;
   background-color: #363636;
   overflow: hidden;

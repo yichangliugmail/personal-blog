@@ -2,7 +2,7 @@ package com.lyc.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.model.dto.UserInfoDTO;
 import com.lyc.model.vo.*;
 import com.lyc.service.UserService;

@@ -19,6 +19,7 @@
     "image-conversion": "^2.1.1",
     "js-cookie": "^3.0.1",
     "md-editor-v3": "^2.7.2",
+    "naive-ui": "^2.38.2",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.31",
     "pinia-plugin-persistedstate": "^2.4.0",
@@ -27,6 +28,7 @@
     "tippy.js": "^6.3.7",
     "v-viewer": "^3.0.11",
     "vue": "^3.2.47",
+    "vue-i18n": "^9.13.1",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

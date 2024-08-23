@@ -1,5 +1,5 @@
 <template>
-  <div class="brand-container">
+  <div ref="brandRef" class="brand-container">
     <div class="brand">
       <!-- 标题 -->
       <p class="artboard">{{ blog.blogInfo.siteConfig.siteName }}</p>
@@ -17,8 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import useStore from "@/store";
+import { useBlogStore } from "@/store";
 import EasyTyper from "easy-typer-js";
+const blog = useBlogStore();
 const obj = reactive({
   output: "",
   isEnd: false,
@@ -29,11 +30,13 @@ const obj = reactive({
   backSpeed: 100,
   sentencePause: false,
 });
-const { blog } = useStore();
+const brandRef = ref<HTMLElement>();
 const scrollDown = () => {
-  window.scrollTo({
-    behavior: "smooth",
-    top: document.documentElement.clientHeight,
+  nextTick(() => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: brandRef.value?.clientHeight,
+    });
   });
 };
 const fetchData = () => {
@@ -63,7 +66,7 @@ onMounted(() => {
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   min-height: 10rem;
   color: var(--header-text-color);
 }

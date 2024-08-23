@@ -6,7 +6,7 @@ import com.lyc.model.dto.MenuDTO;
 import com.lyc.model.vo.MenuOption;
 import com.lyc.model.vo.MenuTree;
 import com.lyc.model.vo.MenuVO;
-import com.lyc.common.Result;
+import com.lyc.model.common.Result;
 import com.lyc.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,8 +15,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static com.lyc.constant.OptTypeConstant.*;
 
 /**
  * 菜单控制器

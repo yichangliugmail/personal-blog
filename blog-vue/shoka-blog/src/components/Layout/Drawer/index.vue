@@ -43,11 +43,13 @@
 </template>
 
 <script setup lang="ts">
-import useStore from "@/store";
+import { useAppStore, useBlogStore, useUserStore } from "@/store";
 import { useWindowSize } from "@vueuse/core";
 const route = useRoute();
 const router = useRouter();
-const { app, blog, user } = useStore();
+const app = useAppStore();
+const blog = useBlogStore();
+const user = useUserStore();
 const { width } = useWindowSize();
 const menuList = [
   {
@@ -59,11 +61,11 @@ const menuList = [
     name: "文章",
     icon: "article",
     children: [
-      // {
-      //   name: "归档",
-      //   icon: "archives",
-      //   path: "/archive"
-      // },
+      {
+        name: "归档",
+        icon: "archives",
+        path: "/archive"
+      },
       {
         name: "分类",
         icon: "category",
@@ -76,24 +78,29 @@ const menuList = [
       },
     ]
   },
-  // {
-  //   name: "娱乐",
-  //   icon: "fun",
-  //   children: [
-  //     {
-  //       name: "说说",
-  //       icon: "talk",
-  //       path: "/talk"
-  //     },
-  //     {
-  //       name: "相册",
-  //       icon: "album",
-  //       path: "/album"
-  //     },
-  //   ]
-  // },
   {
-    name: "链接",
+    name: "娱乐",
+    icon: "fun",
+    children: [
+      {
+        name: "说说",
+        icon: "talk",
+        path: "/talk"
+      },
+      {
+        name: "相册",
+        icon: "album",
+        path: "/album"
+      },
+      {
+        name: "图床",
+        icon: "upload",
+        path: "/picture"
+      },
+    ]
+  },
+  {
+    name: "友链",
     icon: "friend",
     path: "/friend"
   },

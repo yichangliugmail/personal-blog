@@ -14,7 +14,8 @@
     <div>
       <div class="social-login-title">社交账号登录</div>
       <div class="social-login-wrapper">
-        <svg-icon class="icon" icon-class="qq" size="2rem" v-if="showLogin('qq')" @click="qqLogin"></svg-icon>
+        <svg-icon class="icon" icon-class="qq" size="2rem" color="#00aaee" v-if="showLogin('qq')"
+          @click="qqLogin"></svg-icon>
         <svg-icon class="icon" icon-class="gitee" size="2rem" v-if="showLogin('gitee')" @click="giteeLogin"></svg-icon>
         <svg-icon class="icon" icon-class="github" size="2rem" v-if="showLogin('github')" @click="githubLogin"></svg-icon>
       </div>
@@ -26,9 +27,11 @@
 import { login } from "@/api/login";
 import { LoginForm } from "@/api/login/types";
 import config from "@/assets/js/config";
-import useStore from "@/store";
+import { useAppStore, useBlogStore, useUserStore } from "@/store";
 import { setToken } from "@/utils/token";
-const { app, user, blog } = useStore();
+const app = useAppStore();
+const user = useUserStore();
+const blog = useBlogStore();
 const route = useRoute();
 const loading = ref(false);
 const loginForm = ref<LoginForm>({
@@ -50,13 +53,17 @@ const handleForget = () => {
   app.setLoginFlag(false);
   app.setForgetFlag(true);
 };
-
 const qqLogin = () => {
   //保留当前路径
   user.savePath(route.path);
   app.setLoginFlag(false);
   window.open(
-    
+    "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" +
+    config.QQ_APP_ID +
+    "&redirect_uri=" +
+    config.QQ_REDIRECT_URL +
+    "&scope=scope&display=display",
+    "_self"
   );
 };
 const giteeLogin = () => {
@@ -67,7 +74,7 @@ const giteeLogin = () => {
     "https://gitee.com/oauth/authorize?client_id=" +
     config.GITEE_APP_ID +
     "&response_type=code&redirect_uri=" +
-    config.GITEE_REDIRECT_URI,
+    config.GITEE_REDIRECT_URL,
     "_self"
   );
 };

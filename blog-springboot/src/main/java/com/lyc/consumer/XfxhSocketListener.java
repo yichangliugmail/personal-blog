@@ -3,11 +3,15 @@ package com.lyc.consumer;
 import com.alibaba.fastjson2.JSONObject;
 import com.lyc.model.dto.MsgDTO;
 import com.lyc.model.dto.ResponseDTO;
+import com.lyc.service.LlmService;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.io.IOException;
 
 /**
  * @Description 星火websocket监听器
@@ -25,8 +29,9 @@ public class XfxhSocketListener extends WebSocketListener {
 
     @Override
     public void onOpen(@NotNull WebSocket webSocket, @NotNull Response response) {
-        log.info(">>>onOpen 与大模型建立连接");
         super.onOpen(webSocket, response);
+        log.info(">>>onOpen 与大模型建立连接");
+
     }
 
     @Override
